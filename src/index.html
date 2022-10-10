@@ -2,24 +2,216 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
     <link
-      rel="icon"
-      type="image/svg+xml"
-      href="/vite.svg"
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Kodchasan:wght@300;400;700&family=Londrina+Solid&display=swap"
+      rel="stylesheet"
     />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
+
     <title>Vildskud</title>
   </head>
 
   <body class="">
-    <img
-      src="img/vite.svg"
-      alt="Vite Logo"
-    />
+    <header>
+      <div class="space-x-8 lg:flex">
+        <a href="index.html">Forside</a>
+        <a href="program.html"
+          >Program</a
+        >
+        <a href="opencall.html"
+          >opencal</a
+        >
+        <a href="om.html">Om</a>
+        <a href="kontakt.html"
+          >kontakt</a
+        >
+        <a href="teamet.html"
+          >bag teamet</a
+        >
+        <a href="stepbystep.html"
+          >stepguide</a
+        >
+        <a href="frivilig.html"
+          >frivilig</a
+        >
+        <a href="forestillinger.html"
+          >forestillinger</a
+        >
+      </div>
+      <!-- <nav class="flex justify-between">
+      <div>
+        <h3
+          class="text-2xl text-blue-500 font-medium"
+        >
+          2/8 - 6/8
+        </h3>
+      </div>
+      <div
+        class="hidden space-x-8 lg:flex"
+      >
+        <a href="#">Menu 1</a>
+        <a href="#">Menu 2</a>
+        <a href="#">Menu 3</a>
+        <a href="#">Menu 4</a>
+      </div>
+      <div class="flex lg:hidden">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </div>
+    </nav> -->
+    </header>
+    <!-- Splash -->
+    <section class="mt-28">
+      <div
+        class="flex h-2/3 flex-col gap-32"
+      >
+        <h5
+          class="flex w-fit self-center rounded-md bg-pink px-2 font-h5 text-h5"
+        >
+          Scenekunst. Vær med. Se med.
+        </h5>
+        <div class="flex flex-col">
+          <button
+            class="w-1/2 self-center rounded-md bg-blue py-5 font-btnpri text-btnp text-white"
+          >
+            Køb din billet her
+          </button>
+          <img
+            class="h-1/2"
+            src="/img/vildskudlogo.svg"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
 
+    <!-- 3 Kategorier -->
+    <section class="">
+      <div
+        class="m-20 flex flex-col gap-5"
+      >
+        <a
+          class="to-16 h-96 border-2 border-solid border-blue bg-ladyread bg-cover font-h6 text-h6 text-red"
+          href=""
+          >Program</a
+        >
+
+        <a
+          class="h-96 border-2 border-solid border-blue bg-twobike bg-cover font-h6 text-h6 text-red"
+          href=""
+          >Bliv frivilling</a
+        >
+
+        <a
+          class="h-96 border-2 border-solid border-blue bg-ladydrink bg-cover font-h6 text-h6 text-red"
+          href=""
+          >Open call</a
+        >
+        <img src="" alt="" />
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="flex flex-col bg-footerpink py-10"
+    >
+      <img
+        class="h-28 pb-10"
+        src="/img/vildskudlogo.svg"
+        alt=""
+      />
+      <div class="flex flex-col gap-10">
+        <div
+          class="flex flex-col place-items-center gap-2 self-center"
+        >
+          <p
+            class="font-body text-body uppercase"
+          >
+            Sociale medier
+          </p>
+          <a
+            class="font-body text-body"
+            href=""
+            >Instagram</a
+          >
+          <a
+            class="font-body text-body"
+            href=""
+            >Facebook</a
+          >
+          <a
+            class="font-body text-body"
+            href="mailto:info@vildskud.dk"
+            >info@vildskud.dk</a
+          >
+          <a
+            class="font-body text-body"
+            href="tel:+45 12 34 56 78"
+            >+45 1234 5678</a
+          >
+        </div>
+        <div
+          class="flex flex-col place-items-center gap-4"
+        >
+          <a
+            class="font-body text-body uppercase"
+            href="kontakt.html"
+            >Kontakt</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href=""
+            >Samarbejdspartner</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href=""
+            >Cookies</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href=""
+            >Privatlivspolitik</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href="sitemap.html"
+            >Sitemap</a
+          >
+        </div>
+      </div>
+      <p
+        class="text-2xs mt-6 flex justify-center font-body"
+      >
+        Copyright © 2023 • Vildskud
+        Festival
+      </p>
+    </footer>
     <script
       type="module"
       src="./main.js"
