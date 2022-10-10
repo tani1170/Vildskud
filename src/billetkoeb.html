@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/vite.svg"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Vildskud</title>
+  </head>
+
+  <body class="">
+    <main
+      class="m-10 mb-8 border-2 border-black p-8 pb-4"
+      id="step"
+      x-data="{ step: 'step1', billettype: 'endag', antal: '1', dato : 'a.august', amount : '4'}"
+    >
+      <header
+        class="border-b border-slate-500 pt-4 pb-8"
+      >
+        <p
+          class="flex justify-center self-center pb-2 text-4xl"
+        >
+          BILLETKØB
+        </p>
+        <!-- <ul class="">
+        <li
+          class="inline pr-2"
+          :class="{'border-black border-b': step === 'step1' }"
+        >
+          1: Billettype
+        </li>
+        <li
+          class="inline pr-2"
+          :class="{'border-black border-b': step === 'step2' }"
+        >
+          2: Antal
+        </li>
+        <li
+          class="inline pr-2"
+          :class="{'border-black border-b': step === 'step3' }"
+        >
+          3: Dag
+        </li>
+        <li
+          class="inline pr-2"
+          :class="{'border-black border-b': step === 'step4' }"
+        >
+          4: Bekræftelse
+        </li>
+      </ul> -->
+      </header>
+
+      <section
+        class="border-b border-slate-500 py-8"
+      >
+        <!-- step 1  -- BILLETTYPE -->
+        <div
+          id="step1"
+          x-show="step === 'step1'"
+        >
+          <!-- <p class="mb-4">
+          So: You love wine, and want
+          wine delivered to your
+          doorstep on subscription!
+        </p> -->
+          <p class="mb-10">
+            Vælg billettype
+          </p>
+          <form
+            id="billetkoeb"
+            class="flex flex-col gap-5"
+          >
+            <div>
+              <input
+                type="radio"
+                id="endag"
+                name="billetype"
+                value="endag"
+                x-model="billettype"
+              />
+              <label for="endag"
+                >Endags-billet 120
+                KR</label
+              >
+            </div>
+            <div>
+              <input
+                type="radio"
+                id="partout"
+                name="billettype"
+                value="partout"
+                x-model="billettype"
+              />
+              <label for="partout"
+                >Partout-billet 295
+                KR</label
+              >
+            </div>
+          </form>
+        </div>
+
+        <!-- step 2  --  ANTAL -->
+        <div
+          id="step2"
+          x-show="step === 'step2'"
+          class="flex flex-col gap-10"
+        >
+          <p>
+            Hvor mange antal billetter
+            ønsker du?
+          </p>
+          <div>
+            <label for="antal"
+              >Vælg antal
+              billetter:</label
+            >
+            <select
+              name="antal"
+              id="antal"
+              x-model="antal"
+              form="billetkoeb"
+            >
+              <option value="1">
+                1
+              </option>
+              <option value="2">
+                2
+              </option>
+              <option value="3">
+                3
+              </option>
+              <option value="4">
+                4
+              </option>
+              <option value="5">
+                5
+              </option>
+              <option value="6">
+                5
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- step 3  -- DATO  -->
+        <div
+          id="step3"
+          x-show="step === 'step3'"
+          class="flex flex-col gap-10"
+        >
+          <p>
+            Hvilken dag vil du købe
+            billetter til?
+          </p>
+          <div>
+            <label for="dato"
+              >Endags-billet til d.
+            </label>
+            <select
+              name="dato"
+              id="dato"
+              x-model="dato"
+              form="billetkoeb"
+            >
+              <option value="2.augsut">
+                2. august
+              </option>
+              <option value="3.august">
+                3. august
+              </option>
+              <option value="4.augsut">
+                4. august
+              </option>
+              <option value="5.august">
+                5. august
+              </option>
+              <option value="6.august">
+                6. august
+              </option>
+            </select>
+          </div>
+        </div>
+        <!-- step 4-->
+        <div
+          id="step4"
+          x-show="step === 'step4'"
+          class="prose"
+        >
+          <h3>Din kurv</h3>
+
+          <!-- <p
+          x-show="billettype === 'endag'"
+        >
+          Du har valgt Endags-billet
+        </p>
+        <p
+          x-show="billettype === 'partout'"
+        >
+          Du har valgt Partout-billet
+        </p> -->
+
+          <p>
+            <span
+              x-text="`Du har valgt ${antal} `"
+            ></span>
+            <span
+              x-show="billettype === 'endag'"
+            >
+              en endags-
+            </span>
+            <span
+              x-show="billettype === 'partout'"
+            >
+              partout-
+            </span>
+
+            <span x-show="antal === '1'"
+              >billet</span
+            >
+            <span x-show="antal === '2'"
+              >billetter</span
+            >
+            <span x-show="antal === '3'"
+              >billetter</span
+            >
+            <span x-show="antal === '4'"
+              >billetter</span
+            >
+            <span x-show="antal === '5'"
+              >billetter</span
+            >
+            <span x-show="antal === '6'"
+              >billetter</span
+            >
+          </p>
+
+          <p>
+            <span>Pris: </span
+            ><span
+              class="font-bold"
+              x-text="`${antal * 120} DKK `"
+            ></span>
+          </p>
+        </div>
+      </section>
+
+      <footer
+        class="flex justify-between py-8"
+      >
+        <div class="">
+          <button
+            id="knap2"
+            class="border-2 border-black p-2"
+            x-on:click="step = 'step1'"
+            x-show="step === 'step2'"
+          >
+            &LeftArrow; Billettype
+          </button>
+          <button
+            id="knap3"
+            class="border-2 border-black p-2"
+            x-on:click="step = 'step2'"
+            x-show="step === 'step3'"
+          >
+            &LeftArrow; Antal billetter
+          </button>
+          <button
+            id="knap4"
+            class="border-2 border-black p-2"
+            x-on:click="step = 'step3'"
+            x-show="step === 'step4'"
+          >
+            &LeftArrow; Dato
+          </button>
+        </div>
+        <div class="">
+          <button
+            id="knap2"
+            class="border-2 border-black p-2"
+            x-on:click="step = 'step2'"
+            x-show="step === 'step1'"
+          >
+            Antal billetter &RightArrow;
+          </button>
+          <button
+            id="knap3"
+            class="border-2 border-black p-2"
+            x-on:click="step = 'step3'"
+            x-show="step === 'step2'"
+          >
+            Dato &RightArrow;
+          </button>
+          <button
+            id="knap4"
+            class="border-2 border-black p-2"
+            x-on:click="step = 'step4'"
+            x-show="step === 'step3'"
+          >
+            Gå til kurv &RightArrow;
+          </button>
+          <button
+            id="knap4"
+            class="border-2 border-black bg-green-200 p-2"
+            x-on:click="step = 'step4'"
+            x-show="step === 'step4'"
+          >
+            Gå til betaling
+          </button>
+        </div>
+      </footer>
+    </main>
+
+    <script
+      type="module"
+      src="./main.js"
+    ></script>
+    <script
+      src="//unpkg.com/alpinejs"
+      defer
+    ></script>
+  </body>
+</html>
