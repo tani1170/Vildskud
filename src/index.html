@@ -25,6 +25,198 @@
   </head>
 
   <body class="">
+    <!-- COOKIE BOKS -->
+    <div class="flex justify-center">
+      <!-- cookie wrapper -->
+      <div
+        class="cookie_wrapper fixed top-96 z-10 mx-10 rounded-xl border-2 border-blue bg-white object-center p-8 text-center shadow-md lg:w-1/2"
+      >
+        <!-- cookie content -->
+        <div class="content mt-2">
+          <header
+            class="text-2xl font-bold"
+          >
+            Vi benytter cookies
+          </header>
+          <p
+            class="text-sm my-3 mx-5 text-black"
+          >
+            Vi bruger egne og
+            tredjeparters cookies på
+            vores website med henblik på
+            at huske din indkøbskurv,
+            personalisere din
+            brugeroplevelse og til at
+            undersøge, hvordan vores
+            hjemmeside bliver brugt.
+          </p>
+          <!-- cookieknapper -->
+          <div
+            class="my-5 flex items-center justify-center gap-3"
+          >
+            <!-- afvis knap -->
+            <button
+              class="afvis text-md cursor-pointer rounded-md border-2 border-blue bg-white px-6 py-3 text-blue transition-all hover:bg-blue hover:font-bold hover:text-white"
+            >
+              NEJ TAK
+            </button>
+
+            <!-- accepter knap -->
+            <button
+              class="accepter text-md cursor-pointer rounded-md bg-blue px-4 py-3 text-white transition-all hover:border-2 hover:border-blue hover:bg-white hover:font-bold hover:text-blue"
+            >
+              OK TIL ALLE
+            </button>
+          </div>
+          <!-- cookie læs mere -->
+          <a
+            href="cookie.html"
+            class="item ml-5 text-black hover:text-blue hover:underline"
+            >Vis detaljer</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar goes here -->
+    <nav class="bg-white shadow-lg">
+      <div
+        class="mx-auto max-w-6xl px-4"
+      >
+        <div
+          class="flex justify-between"
+        >
+          <div class="flex space-x-7">
+            <div>
+              <!-- Website Logo -->
+              <a
+                href="#"
+                class="flex items-center py-4 px-2"
+              >
+                <img
+                  src="logo.png"
+                  alt="Logo"
+                  class="mr-2 h-8 w-8"
+                />
+                <span
+                  class="text-gray-500 text-lg font-semibold"
+                  >Navigation</span
+                >
+              </a>
+            </div>
+            <!-- Primary Navbar items -->
+            <div
+              class="hidden items-center space-x-1 md:flex"
+            >
+              <a
+                href="index.html"
+                class="border-b-4 py-4 px-2"
+                >FORSIDE</a
+              >
+              <a
+                href=""
+                class="programnav text-gray-500 hover:text-green-500 py-4 px-2 font-semibold transition duration-300"
+                >PROGRAM
+              </a>
+              <a
+                href=""
+                class="text-gray-500 hover:text-green-500 py-4 px-2 font-semibold transition duration-300"
+                >DELTAG</a
+              >
+              <a
+                href=""
+                class="text-gray-500 hover:text-green-500 py-4 px-2 font-semibold transition duration-300"
+                >OM</a
+              >
+            </div>
+          </div>
+
+          <!-- 
+          <div class="programundernav">
+            <div
+              class="v hidden items-center space-x-1 md:flex"
+            >
+              <a
+                href="index.html"
+                class="border-b-4 py-4 px-2"
+                >PROGRAM 2023</a
+              >
+              <a
+                href="forestillinger.html"
+                class="text-gray-500 hover:text-green-500 py-4 px-2 font-semibold transition duration-300"
+                >FORESTILLINGER</a
+              >
+              <a
+                href=""
+                class="text-gray-500 hover:text-green-500 py-4 px-2 font-semibold transition duration-300"
+                >RESERVER PLADS</a
+              >
+            </div>
+          </div> -->
+
+          <!-- Mobile menu button -->
+          <div
+            class="flex items-center md:hidden"
+          >
+            <button
+              class="mobile-menu-button outline-none"
+            >
+              <svg
+                class="text-gray-500 hover:text-green-500 h-6 w-6"
+                x-show="!showMenu"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- mobile menu -->
+      <div class="mobile-menu hidden">
+        <ul class="">
+          <li class="active">
+            <a
+              href="index.html"
+              class="text-sm bg-green-500 block px-2 py-4 font-semibold text-white"
+              >FORSIDE</a
+            >
+          </li>
+          <li>
+            <a
+              href="program.html"
+              class="text-sm hover:bg-green-500 block px-2 py-4 transition duration-300"
+              >PROGRAM</a
+            >
+          </li>
+          <li>
+            <a
+              href="Deltag"
+              class="text-sm hover:bg-green-500 block px-2 py-4 transition duration-300"
+              >DELTAG</a
+            >
+          </li>
+          <li>
+            <a
+              href="om"
+              class="text-sm hover:bg-green-500 block px-2 py-4 transition duration-300"
+            >
+              OM</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    -->
     <header>
       <div class="space-x-8 lg:flex">
         <a href="index.html">Forside</a>
@@ -248,5 +440,72 @@
       src="//unpkg.com/alpinejs"
       defer
     ></script>
+    <script>
+      const btn =
+        document.querySelector(
+          "button.mobile-menu-button"
+        );
+      const menu =
+        document.querySelector(
+          ".mobile-menu"
+        );
+
+      btn.addEventListener(
+        "click",
+        () => {
+          menu.classList.toggle(
+            "hidden"
+          );
+        }
+      );
+
+      const cookieBox =
+        document.querySelector(
+          ".cookie_wrapper"
+        );
+      const denyCookie =
+        document.querySelector(
+          ".afvis"
+        );
+      const acceptCookie =
+        document.querySelector(
+          ".accepter"
+        );
+
+      acceptCookie.addEventListener(
+        "click",
+        fjernCookieboks
+      );
+      denyCookie.addEventListener(
+        "click",
+        fjernCookieboks
+      );
+
+      function fjernCookieboks() {
+        cookieBox.classList.add(
+          "hidden"
+        );
+      }
+
+      // const program =
+      //   document.querySelector(
+      //     "programnav"
+      //   );
+
+      // const programmenu =
+      //   document.querySelector(
+      //     "programundernav"
+      //   );
+      // program.addEventListener(
+      //   "click",
+      //   openprogram
+      // );
+
+      // function openprogam() {
+      //   programmenu.classList.add(
+      //     "hidden"
+      //   );
+      // }
+    </script>
   </body>
 </html>
