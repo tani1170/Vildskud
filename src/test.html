@@ -26,74 +26,73 @@
 
   <body class="">
     <section
-      class="m-10 grid gap-10 border-2 border-blue bg-white py-8 pl-8"
-      id=""
+      class="m-10 grid gap-10 border-2 border-blue bg-white pt-8"
+      id="step"
+      x-data="{ spillested: 'allevenues', skjulteforestillinger : 0 }"
     >
       <div>
         <h1
-          class="mb-8 font-h1 text-h1"
+          class="mb-8 flex justify-center font-h1 text-h1"
         >
           Program 2023
         </h1>
       </div>
 
       <!-- Dropdown filter -->
-      <div>
-        <div class="">
-          <div>
-            <form>
-              <div>
-                <label for="spillested"
-                  >Vælg lokation</label
-                >
-              </div>
-              <div>
-                <select
-                  name="teaterhus"
-                  id="teaterhus"
-                  class="border border-blue"
-                >
-                  <option value="alle">
-                    Alle Venues
-                  </option>
-                  <option value="vox">
-                    Vox -Teaterhuset
-                  </option>
-                  <option value="zebu">
-                    ZeBU
-                  </option>
-                  <option value="xenon">
-                    Xenon - Teaterhus
-                  </option>
-                  <option
-                    value="downunder"
-                  >
-                    Downunder
-                  </option>
-                </select>
-              </div>
-            </form>
-          </div>
+
+      <form class="flex justify-center">
+        <div>
+          <label for="spillested"
+            >Vælg lokation:</label
+          >
+          <select
+            name="spillested"
+            id="spillested"
+            class="border border-blue"
+            x-model="spillested"
+            form="filtre"
+            x-on:change="$nextTick(() => { ingenforestillinger() });"
+          >
+            <option value="allevenues">
+              Alle venues
+            </option>
+            <option value="vox">
+              Vox
+            </option>
+            <option value="downunder">
+              Downunder
+            </option>
+            <option value="zebu">
+              Zebu
+            </option>
+          </select>
         </div>
-      </div>
+      </form>
 
-      <!-- Card -->
+      <!-- Cards -->
 
-      <div class="overflow-hidden">
+      <div
+        class="forestillinger overflow-hidden"
+      >
         <!-- VOX -->
         <div
-          class="max-w-96 flex justify-center"
+          class="forestilling"
+          :class="{'hidden': !(['allevenues', 'vox'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
         >
-          <div>
+          <div
+            class="max-w-96 relative top-36 -left-20 z-10"
+          >
             <p
-              class="absolute bottom-72 -left-10 flex w-48 -rotate-90 flex-nowrap justify-center border border-blue font-input text-undernav"
+              class="flex w-48 -rotate-90 justify-center border border-blue bg-white font-input text-undernav"
             >
               Vox-Teaterhuset
             </p>
           </div>
-        </div>
-        <!-- card -->
-        <div class="">
+
+          <!-- card -->
+
           <div class="">
             <div
               class="hide-scroll-bar flex overflow-x-scroll pb-10"
@@ -281,163 +280,168 @@
 
         <!-- ZeBU -->
         <div
-          class="max-w-96 flex justify-center"
+          class="forestilling"
+          :class="{'hidden': !(['allevenues', 'zebu'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
         >
-          <div>
+          <div
+            class="max-w-96 relative -left-20 top-36 justify-center"
+          >
             <p
-              class="absolute -bottom-10 -left-10 flex w-48 -rotate-90 flex-nowrap justify-center border border-blue font-input text-undernav"
+              class="flex w-48 -rotate-90 justify-center border border-blue bg-white font-input text-undernav"
             >
               ZeBU
             </p>
           </div>
-        </div>
-        <!-- card -->
-        <div class="">
+          <!-- card -->
           <div class="">
-            <div
-              class="hide-scroll-bar flex overflow-x-scroll pb-10"
-            >
+            <div class="">
               <div
-                class="ml-10 flex flex-nowrap gap-2 md:ml-20 lg:ml-40"
+                class="hide-scroll-bar flex overflow-x-scroll pb-10"
               >
-                <!-- 2.august -->
                 <div
-                  class="inline-block"
+                  class="ml-10 flex flex-nowrap gap-2 md:ml-20 lg:ml-40"
                 >
-                  <!--card  -->
+                  <!-- 2.august -->
                   <div
-                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    class="inline-block"
                   >
-                    <!-- card header -->
+                    <!--card  -->
                     <div
-                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
                     >
-                      <p class="">
-                        Tirsdag
-                      </p>
-                      <p>2. august</p>
-                    </div>
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Tirsdag
+                        </p>
+                        <p>2. august</p>
+                      </div>
 
-                    <!-- card info -->
-                    <div
-                      class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
-                    >
-                      <p
-                        class="font-bold"
+                      <!-- card info -->
+                      <div
+                        class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
                       >
-                        kl 18:30
-                      </p>
-                      <a href=""
-                        >What fires
-                        together wires
-                        together</a
-                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 18:30
+                        </p>
+                        <a href=""
+                          >What fires
+                          together wires
+                          together</a
+                        >
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- 3.august -->
-                <div
-                  class="inline-block"
-                >
-                  <!--card  -->
+                  <!-- 3.august -->
                   <div
-                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    class="inline-block"
                   >
-                    <!-- card header -->
+                    <!--card  -->
                     <div
-                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
                     >
-                      <p class="">
-                        Onsdag
-                      </p>
-                      <p>3. august</p>
-                    </div>
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Onsdag
+                        </p>
+                        <p>3. august</p>
+                      </div>
 
-                    <!-- card info -->
-                    <div
-                      class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
-                    >
-                      <p
-                        class="font-bold"
+                      <!-- card info -->
+                      <div
+                        class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
                       >
-                        kl 17:35
-                      </p>
-                      <a href=""
-                        >What fires
-                        together wires
-                        together</a
-                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 17:35
+                        </p>
+                        <a href=""
+                          >What fires
+                          together wires
+                          together</a
+                        >
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- 4.august -->
-                <div
-                  class="inline-block"
-                >
-                  <!--card  -->
+                  <!-- 4.august -->
                   <div
-                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    class="inline-block"
                   >
-                    <!-- card header -->
+                    <!--card  -->
                     <div
-                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
                     >
-                      <p class="">
-                        Torsdag
-                      </p>
-                      <p>4. august</p>
-                    </div>
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Torsdag
+                        </p>
+                        <p>4. august</p>
+                      </div>
 
-                    <!-- card info -->
-                    <div
-                      class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
-                    >
-                      <p
-                        class="font-bold"
+                      <!-- card info -->
+                      <div
+                        class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
                       >
-                        kl 18:30
-                      </p>
-                      <a href=""
-                        >Det levende
-                        rum</a
-                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 18:30
+                        </p>
+                        <a href=""
+                          >Det levende
+                          rum</a
+                        >
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- 5.august -->
-                <div
-                  class="inline-block"
-                >
-                  <!--card  -->
+                  <!-- 5.august -->
                   <div
-                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    class="inline-block"
                   >
-                    <!-- card header -->
+                    <!--card  -->
                     <div
-                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
                     >
-                      <p class="">
-                        Fredag
-                      </p>
-                      <p>5. august</p>
-                    </div>
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Fredag
+                        </p>
+                        <p>5. august</p>
+                      </div>
 
-                    <!-- card info -->
-                    <div
-                      class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
-                    >
-                      <p
-                        class="font-bold"
+                      <!-- card info -->
+                      <div
+                        class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
                       >
-                        kl 18:00
-                      </p>
-                      <a href=""
-                        >Det levende
-                        rum</a
-                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 18:00
+                        </p>
+                        <a href=""
+                          >Det levende
+                          rum</a
+                        >
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -448,171 +452,179 @@
 
         <!-- Xenon  -->
         <div
-          class="max-w-96 flex justify-center"
+          class="forestilling"
+          :class="{'hidden': !(['allevenues', 'xenon'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
         >
-          <div>
-            <p
-              class="absolute -bottom-80 -left-12 flex w-52 -rotate-90 flex-nowrap justify-center border border-blue font-input text-undernav"
-            >
-              Xenon-Teaterhuset
-            </p>
-          </div>
-        </div>
-        <!-- card -->
-        <div class="">
-          <div class="">
-            <div
-              class="hide-scroll-bar flex overflow-x-scroll pb-10"
-            >
-              <div
-                class="ml-10 flex flex-nowrap gap-2 md:ml-20 lg:ml-40"
+          <div
+            class="max-w-96 relative -left-[88px] top-36 justify-center"
+          >
+            <div>
+              <p
+                class="nowrap flex w-52 -rotate-90 flex-nowrap justify-center border border-blue bg-white font-input text-undernav"
               >
-                <!-- 4.august -->
+                Xenon-Teaterhuset
+              </p>
+            </div>
+          </div>
+          <!-- card -->
+          <div class="">
+            <div class="">
+              <div
+                class="hide-scroll-bar flex overflow-x-scroll pb-10"
+              >
                 <div
-                  class="inline-block"
+                  class="ml-10 flex flex-nowrap gap-2 md:ml-20 lg:ml-40"
                 >
-                  <!--card  -->
+                  <!-- 4.august -->
                   <div
-                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    class="inline-block"
                   >
-                    <!-- card header -->
+                    <!--card  -->
                     <div
-                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
                     >
-                      <p class="">
-                        Torsdag
-                      </p>
-                      <p>4. august</p>
-                    </div>
-
-                    <!-- card info -->
-                    <div
-                      class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
-                    >
-                      <!-- 1. venue -->
+                      <!-- card header -->
                       <div
-                        class="grid grid-cols-2"
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
                       >
                         <p class="">
-                          kl 16:45
+                          Torsdag
                         </p>
-                        <a href=""
-                          >GO GO YO-YOKU
-                        </a>
+                        <p>4. august</p>
                       </div>
 
-                      <!-- 2. venue -->
+                      <!-- card info -->
                       <div
-                        class="grid grid-cols-2"
+                        class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
                       >
-                        <p class="">
-                          kl 20:15
-                        </p>
-                        <a href=""
-                          >GO GO
-                          YO-YOKU</a
+                        <!-- 1. venue -->
+                        <div
+                          class="grid grid-cols-2"
                         >
+                          <p class="">
+                            kl 16:45
+                          </p>
+                          <a href=""
+                            >GO GO
+                            YO-YOKU
+                          </a>
+                        </div>
+
+                        <!-- 2. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p class="">
+                            kl 20:15
+                          </p>
+                          <a href=""
+                            >GO GO
+                            YO-YOKU</a
+                          >
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- 5. august -->
-                <div
-                  class="inline-block"
-                >
-                  <!--card  -->
+                  <!-- 5. august -->
                   <div
-                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    class="inline-block"
                   >
-                    <!-- card header -->
+                    <!--card  -->
                     <div
-                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
                     >
-                      <p class="">
-                        Fredag
-                      </p>
-                      <p>5. august</p>
-                    </div>
-
-                    <!-- card info -->
-                    <div
-                      class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
-                    >
-                      <!-- 1. venue -->
+                      <!-- card header -->
                       <div
-                        class="grid grid-cols-2"
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
                       >
                         <p class="">
-                          kl 16:30
+                          Fredag
                         </p>
-                        <a href=""
-                          >GO GO
-                          YO-YOKU</a
-                        >
+                        <p>5. august</p>
                       </div>
 
-                      <!-- 2. venue -->
+                      <!-- card info -->
                       <div
-                        class="grid grid-cols-2"
+                        class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
                       >
-                        <p class="">
-                          kl 20:00
-                        </p>
-                        <a href=""
-                          >Frygten for
-                          at leve</a
+                        <!-- 1. venue -->
+                        <div
+                          class="grid grid-cols-2"
                         >
+                          <p class="">
+                            kl 16:30
+                          </p>
+                          <a href=""
+                            >GO GO
+                            YO-YOKU</a
+                          >
+                        </div>
+
+                        <!-- 2. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p class="">
+                            kl 20:00
+                          </p>
+                          <a href=""
+                            >Frygten for
+                            at leve</a
+                          >
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <!-- 6.august -->
-                <div
-                  class="inline-block"
-                >
-                  <!--card  -->
+                  <!-- 6.august -->
                   <div
-                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    class="inline-block"
                   >
-                    <!-- card header -->
+                    <!--card  -->
                     <div
-                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
                     >
-                      <p class="">
-                        Lørdag
-                      </p>
-                      <p>6. august</p>
-                    </div>
-
-                    <!-- card info -->
-                    <div
-                      class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
-                    >
-                      <!-- 1. venue -->
+                      <!-- card header -->
                       <div
-                        class="grid grid-cols-2"
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
                       >
                         <p class="">
-                          kl 12:45
+                          Lørdag
                         </p>
-                        <a href=""
-                          >Frygten for
-                          at leve</a
-                        >
+                        <p>6. august</p>
                       </div>
 
-                      <!-- 2. venue -->
+                      <!-- card info -->
                       <div
-                        class="grid grid-cols-2"
+                        class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
                       >
-                        <p class="">
-                          kl 14:45
-                        </p>
-                        <a href=""
-                          >Frygten for
-                          at leve</a
+                        <!-- 1. venue -->
+                        <div
+                          class="grid grid-cols-2"
                         >
+                          <p class="">
+                            kl 12:45
+                          </p>
+                          <a href=""
+                            >Frygten for
+                            at leve</a
+                          >
+                        </div>
+
+                        <!-- 2. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p class="">
+                            kl 14:45
+                          </p>
+                          <a href=""
+                            >Frygten for
+                            at leve</a
+                          >
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -624,142 +636,149 @@
 
         <!-- Downunder -->
         <div
-          class="max-w-96 flex justify-center"
+          class="forestilling"
+          :class="{'hidden': !(['allevenues', 'downunder'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
         >
-          <div>
-            <p
-              class="absolute -left-10 flex w-48 -rotate-90 flex-nowrap justify-center border border-blue font-input text-undernav"
-            >
-              Downunder
-            </p>
-          </div>
-        </div>
-        <!-- card -->
-        <div class="">
-          <div class="">
-            <div
-              class="hide-scroll-bar flex overflow-x-scroll pb-10"
-            >
-              <div
-                class="ml-10 flex flex-nowrap gap-2 md:ml-20 lg:ml-40"
+          <div
+            class="max-w-96 relative -left-20 top-36 justify-center"
+          >
+            <div>
+              <p
+                class="flex w-48 -rotate-90 flex-nowrap justify-center border border-blue bg-white font-input text-undernav"
               >
-                <!-- 4.august -->
+                Downunder
+              </p>
+            </div>
+          </div>
+          <!-- card -->
+          <div class="">
+            <div class="">
+              <div
+                class="hide-scroll-bar flex overflow-x-scroll pb-10"
+              >
                 <div
-                  class="inline-block"
+                  class="ml-10 flex flex-nowrap gap-2 md:ml-20 lg:ml-40"
                 >
-                  <!--card  -->
+                  <!-- 4.august -->
                   <div
-                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    class="inline-block"
                   >
-                    <!-- card header -->
+                    <!--card  -->
                     <div
-                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
                     >
-                      <p class="">
-                        Torsdag
-                      </p>
-                      <p>4. august</p>
-                    </div>
-
-                    <!-- card info -->
-                    <div
-                      class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
-                    >
-                      <!-- 1. venue -->
+                      <!-- card header -->
                       <div
-                        class="grid grid-cols-2"
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
                       >
                         <p class="">
-                          kl 15:00
+                          Torsdag
                         </p>
-                        <a href=""
-                          >Re-birth
-                        </a>
+                        <p>4. august</p>
                       </div>
 
-                      <!-- 2. venue -->
+                      <!-- card info -->
                       <div
-                        class="grid grid-cols-2"
+                        class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
                       >
-                        <p class="">
-                          kl 18:15
-                        </p>
-                        <a href=""
-                          >Re-birth</a
+                        <!-- 1. venue -->
+                        <div
+                          class="grid grid-cols-2"
                         >
-                      </div>
+                          <p class="">
+                            kl 15:00
+                          </p>
+                          <a href=""
+                            >Re-birth
+                          </a>
+                        </div>
 
-                      <!-- 3. venue -->
-                      <div
-                        class="grid grid-cols-2"
-                      >
-                        <p class="">
-                          kl 20:15
-                        </p>
-                        <a href=""
-                          >Re-birth</a
+                        <!-- 2. venue -->
+                        <div
+                          class="grid grid-cols-2"
                         >
+                          <p class="">
+                            kl 18:15
+                          </p>
+                          <a href=""
+                            >Re-birth</a
+                          >
+                        </div>
+
+                        <!-- 3. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p class="">
+                            kl 20:15
+                          </p>
+                          <a href=""
+                            >Re-birth</a
+                          >
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-                <!-- 5.august -->
-                <div
-                  class="inline-block"
-                >
-                  <!--card  -->
+                  <!-- 5.august -->
                   <div
-                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    class="inline-block"
                   >
-                    <!-- card header -->
+                    <!--card  -->
                     <div
-                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
                     >
-                      <p class="">
-                        Fredag
-                      </p>
-                      <p>5. august</p>
-                    </div>
-
-                    <!-- card info -->
-                    <div
-                      class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
-                    >
-                      <!-- 1. venue -->
+                      <!-- card header -->
                       <div
-                        class="grid grid-cols-2"
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
                       >
                         <p class="">
-                          kl 15:00
+                          Fredag
                         </p>
-                        <a href=""
-                          >Re-birth
-                        </a>
+                        <p>5. august</p>
                       </div>
 
-                      <!-- 2. venue -->
+                      <!-- card info -->
                       <div
-                        class="grid grid-cols-2"
+                        class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
                       >
-                        <p class="">
-                          kl 18:15
-                        </p>
-                        <a href=""
-                          >Re-birth</a
+                        <!-- 1. venue -->
+                        <div
+                          class="grid grid-cols-2"
                         >
-                      </div>
+                          <p class="">
+                            kl 15:00
+                          </p>
+                          <a href=""
+                            >Re-birth
+                          </a>
+                        </div>
 
-                      <!-- 3. venue -->
-                      <div
-                        class="grid grid-cols-2"
-                      >
-                        <p class="">
-                          kl 20:00
-                        </p>
-                        <a href=""
-                          >Re-birth</a
+                        <!-- 2. venue -->
+                        <div
+                          class="grid grid-cols-2"
                         >
+                          <p class="">
+                            kl 18:15
+                          </p>
+                          <a href=""
+                            >Re-birth</a
+                          >
+                        </div>
+
+                        <!-- 3. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p class="">
+                            kl 20:00
+                          </p>
+                          <a href=""
+                            >Re-birth</a
+                          >
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -856,6 +875,29 @@
       defer
     ></script>
 
+    <script>
+      function ingenforestillinger() {
+        const skjulteforestillinger =
+          document.querySelectorAll(
+            ".forestilling.hidden"
+          ).length;
+        if (
+          skjulteforestillinger === 7
+        ) {
+          document
+            .querySelector(
+              "#ingenforestillinger"
+            )
+            .classList.remove("hidden");
+        } else {
+          document
+            .querySelector(
+              "#ingenforestillinger"
+            )
+            .classList.add("hidden");
+        }
+      }
+    </script>
     <style>
       .hide-scroll-bar {
         -ms-overflow-style: none;
