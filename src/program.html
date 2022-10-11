@@ -25,11 +25,24 @@
   </head>
 
   <body class="">
+    <div
+      class="fixed flex self-end"
+    ></div>
     <section
       class="m-10 grid gap-10 border-2 border-blue bg-white pt-8 lg:m-16"
       id="step"
       x-data="{ spillested: 'allevenues', skjulteforestillinger : 0 }"
     >
+      <div
+        class="slide-in-right fixed bottom-56 right-0"
+      >
+        <button
+          class="pulsate-fwd font-inputdesk w-56 rounded-md bg-blue px-2 py-5 font-input text-white"
+        >
+          Har du husket at reservere en
+          plads?
+        </button>
+      </div>
       <div>
         <h1
           class="mb-8 flex justify-center font-h1 text-h1"
