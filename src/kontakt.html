@@ -31,114 +31,160 @@
       <!-- INFORMATION TIL KONTAKT -->
       <div>
         <h1
-          class="mb-8 flex place-content-center font-h1 text-h1"
+          class="mb-8 flex place-content-center font-h1 text-h1 lg:mb-16 lg:text-h1desk"
         >
           Kontakt
         </h1>
         <div
-          class="flex flex-col gap-3 font-body"
+          class="grid gap-3 font-body lg:mx-36 lg:grid-cols-2 lg:gap-20"
         >
-          <p>Hejsa!</p>
-          <p>
-            Har du spørgsmål vedr.
-            frivilligt arbejde, hvad det
-            vil sige at være
-            samarbejdspartner med
-            Vildskud, om at spille på
-            festivalen, eller vil du
-            bare sige hej?
-          </p>
-          <p>
-            Så send en besked til
-            Vildskud-temaet ved hjælp af
-            kontaktformularen.
-          </p>
-          <p>
-            Hvis du er på udkig efter en
-            bestemt person/rolle i
-            teamet, kan du også tage et
-            kig på vores “teamet bag”
-            side.
-          </p>
+          <div class="grid gap-7">
+            <h3
+              class="font-h3 text-h3 font-bold lg:text-h3"
+            >
+              Hejsa!
+            </h3>
+            <p
+              class="font-body text-body lg:text-bodydesk"
+            >
+              Har du spørgsmål vedr.
+              frivilligt arbejde, hvad
+              det vil sige at være
+              samarbejdspartner med
+              Vildskud, om at spille på
+              festivalen, eller vil du
+              bare sige hej?
+            </p>
+          </div>
+          <div class="grid gap-4">
+            <p
+              class="font-body text-body lg:text-bodydesk"
+            >
+              Så send en besked til
+              Vildskud-temaet ved hjælp
+              af vores
+              <a
+                class="text-blue underline"
+                href=""
+              >
+                kontaktformularen.</a
+              >
+            </p>
+            <p
+              class="font-body text-body lg:text-bodydesk"
+            >
+              Hvis du er på udkig efter
+              en bestemt person/rolle i
+              teamet, kan du også tage
+              et kig på vores
+              <a
+                class="text-blue underline"
+                href="teamet.html"
+                >teamet bag</a
+              >
+              side.
+            </p>
+          </div>
         </div>
       </div>
 
+      <div
+        class="grid place-items-center"
+      >
+        <p
+          class="lg:textbody-desk font-body text-body"
+        >
+          ..eller
+        </p>
+        <h3
+          class="font-h3 text-h3 lg:text-h3desk"
+        >
+          Send os en besked
+        </h3>
+      </div>
+
       <!-- INPUT FELTER -->
-      <div>
-        <div>
+      <div class="lg:mx-56 lg:mb-10">
+        <div class="">
           <p
             class="mb-3 font-body text-body"
           >
             * Skal udfyldes
           </p>
           <div
-            class="grid gap-5 font-body text-body"
+            class="grid gap-5 font-body text-body lg:grid-cols-2"
           >
-            <!-- Navn -->
-            <div>
-              <div class="form-control">
+            <div class="grid gap-5">
+              <!-- Navn -->
+              <div
+                class="lg:col-start-1"
+              >
+                <div
+                  class="form-control"
+                >
+                  <label class="label">
+                    <span
+                      class="label-text font-body text-body"
+                      >Fulde navn*</span
+                    >
+                  </label>
+                  <label
+                    class="input-group font-body text-body"
+                  >
+                    <span>Navn</span>
+                    <input
+                      type="text"
+                      placeholder="Hanne Jespersen"
+                      class="input input-bordered"
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div
+                class="form-control font-body text-body"
+              >
                 <label class="label">
                   <span
                     class="label-text font-body text-body"
-                    >Fulde navn*</span
+                    >Din email *</span
                   >
                 </label>
                 <label
                   class="input-group font-body text-body"
                 >
-                  <span>Navn</span>
+                  <span>Email</span>
                   <input
                     type="text"
-                    placeholder="Hanne Jespersen"
+                    placeholder="domæne@gmail.dk"
                     class="input input-bordered"
                   />
                 </label>
               </div>
-            </div>
 
-            <!-- Email -->
-            <div
-              class="form-control font-body text-body"
-            >
-              <label class="label">
-                <span
-                  class="label-text font-body text-body"
-                  >Din email *</span
+              <!-- Emne -->
+              <div class="form-control">
+                <label
+                  class="label font-body text-body"
                 >
-              </label>
-              <label
-                class="input-group font-body text-body"
-              >
-                <span>Email</span>
-                <input
-                  type="text"
-                  placeholder="domæne@gmail.dk"
-                  class="input input-bordered"
-                />
-              </label>
-            </div>
-
-            <!-- Emne -->
-            <div class="form-control">
-              <label
-                class="label font-body text-body"
-              >
-                <span
-                  class="label-text font-body text-body"
-                  >Hvad drejer det sig
-                  om?</span
+                  <span
+                    class="label-text font-body text-body"
+                    >Hvad drejer det sig
+                    om?</span
+                  >
+                </label>
+                <label
+                  class="input-group font-body text-body"
                 >
-              </label>
-              <label
-                class="input-group font-body text-body"
-              >
-                <span>Emne</span>
-                <input
-                  type="text"
-                  placeholder="Deltagelse"
-                  class="input input-bordered font-body text-body"
-                />
-              </label>
+                  <span>Emne</span>
+                  <input
+                    type="text"
+                    placeholder="Deltagelse"
+                    class="input input-bordered font-body text-body"
+                  />
+                </label>
+              </div>
             </div>
 
             <!-- Besked -->
@@ -160,9 +206,14 @@
                 <input
                   type="text"
                   placeholder=""
-                  class="input input-bordered h-28 font-body text-body"
+                  class="input input-bordered h-28 font-body text-body lg:h-60 lg:w-96"
                 />
               </label>
+              <button
+                class="mt-5 rounded-md border-2 border-blue p-2 font-btnsek text-btns text-blue hover:bg-blue hover:text-white active:bg-blue active:text-white"
+              >
+                Indsend
+              </button>
             </div>
           </div>
         </div>
