@@ -2,334 +2,257 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crime Wine Subscription</title>
-  </head>
-  <body class="container mx-auto p-8 max-w-2xl">
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/vite.svg"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Filtrering</title>
 
+    <script
+      type="module"
+      crossorigin
+      src="./assets/main.e95a3ef0.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="./assets/index.90f0dd49.css"
+    />
+  </head>
+  <body
+    class="container mx-auto max-w-2xl p-8"
+  >
     <header class="mb-8">
-      <h1 class="text-4xl">Crime Wine Subscription</h1>
+      <h1 class="text-4xl">
+        Filtrering - version 1
+      </h1>
     </header>
 
-    <main class="border-2 border-black p-8 pb-4 mb-8" id="step" x-data="{ step: 'step1', winetype: '', quantity: '6', howoften : 'weekly', amount : '4'}">
+    <main
+      class="border-black mb-8 border-2 p-8 pb-4"
+      id="step"
+      x-data="{ spilledag: 'alledage', spillested: 'allevenues', skjulteforestillinger : 0 }"
+    >
+      <header
+        class="border-slate-500 border-b pt-4 pb-8"
+      >
+        <form id="filtre" class="flex">
+          <div class="mb-4 mr-4">
+            <label for="spilledag"
+              >Dato:</label
+            >
+            <select
+              name="spilledag"
+              id="spilledag"
+              x-model="spilledag"
+              form="filtre"
+              x-on:change="$nextTick(() => { ingenforestillinger() });"
+            >
+              <option value="alledage">
+                Alle dage
+              </option>
+              <option value="tirsdag">
+                Tirsdag
+              </option>
+              <option value="onsdag">
+                Onsdag
+              </option>
+              <option value="torsdag">
+                Torsdag
+              </option>
+              <option value="fredag">
+                Fredag
+              </option>
+              <option value="lordag">
+                Lørdag
+              </option>
+            </select>
+          </div>
 
-        <header class="border-b border-slate-500 pt-4 pb-8">
-          <p class="pb-2">Configure your subscription in 4 easy steps: </p>
-          <ul class="">
-            <li class="inline pr-2" :class="{'border-black border-b': step === 'step1' }">1: Wine type</li>
-            <li class="inline pr-2" :class="{'border-black border-b': step === 'step2' }" >2: Quantity</li>
-            <li class="inline pr-2" :class="{'border-black border-b': step === 'step3' }">3: Delivery frequency</li>
-            <li class="inline pr-2" :class="{'border-black border-b': step === 'step4' }">4: Confirmation</li>
-          </ul>
-        </header>
+          <div>
+            <label for="spillested"
+              >Venue:</label
+            >
+            <select
+              name="spillested"
+              id="spillested"
+              x-model="spillested"
+              form="filtre"
+              x-on:change="$nextTick(() => { ingenforestillinger() });"
+            >
+              <option
+                value="allevenues"
+              >
+                Alle venues
+              </option>
+              <option value="vox">
+                Vox
+              </option>
+              <option value="downunder">
+                Downunder
+              </option>
+              <option value="zebu">
+                Zebu
+              </option>
+            </select>
+          </div>
+        </form>
+      </header>
 
-        <section class="border-b border-slate-500 py-8">
-        <!-- step 1 -->
-        <div id="step1" x-show="step === 'step1'">
-          <p  class="mb-4">So: You love wine, and want wine delivered to your doorstep on subscription!</p>
-          <p class="mb-4">What type of wine?</p>
-          <form id="winesubscriptionform" class="grid grid-cols-3">  
-            <div>
-              <input type="radio" id="red" name="winetype" value="red" x-model="winetype">
-              <label for="red">Red</label></div>                    
-            <div>
-              <input type="radio" id="white" name="winetype" value="white" x-model="winetype">
-              <label for="white">White</label>
-            </div>
-            <div>
-              <input type="radio" id="both" name="winetype" value="both" x-model="winetype">
-              <label for="both">Both!</label> 
-            </div>
-          </form>
-        </div>
-        <!-- step 2-->
-        <div id="step2" x-show="step === 'step2'">
-          <p>How many bottles per delivery?</p>                    
-          <label for="quantity">Choose how many bottles per delivery:</label>
-          <select name="quantity" id="quantity" x-model="quantity" form="winesubscriptionform">
-            <option value="6">6</option>
-            <option value="12">12</option>
-            <option value="18">18</option>
-            <option value="24">24</option>
-            <option value="30">30</option>
-          </select> 
-        </div>
-        <!-- step 3 -->
-        <div id="step3" x-show="step === 'step3'">
-          <p>How often do you want the wine delivered?</p>                    
-          <label for="howoften">Delivery frequency:</label>
-          <select name="howoften" id="howoften" x-model="howoften" form="winesubscriptionform">
-            <option value="weekly">Every week!</option>
-            <option value="fortnight">Every second week</option>
-            <option value="month">Once a month</option>
-            <option value="threemonths">Every third month </option>
-          </select> 
-        </div>
-        <!-- step 4-->
-        <div id="step4" x-show="step === 'step4'" class="prose">
-          <h3 >Your subscription:</h3> 
-
-          <p x-show="winetype === 'red'">Red wine only</p> 
-          <p x-show="winetype === 'white'">White wine only</p>   
-          <p x-show="winetype === 'both'">Both red and white wine - what a party!</p> 
-
+      <section
+        class="forestillinger border-slate-500 grid grid-cols-2 gap-3 border-b py-8"
+      >
+        <article
+          class="forestilling bg-slate-100 p-3"
+          :class="{'hidden': !(['alledage', 'tirsdag', 'onsdag'].includes(spilledag) && ['allevenues', 'vox'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <!-- x-show alternativ syntaks -->
+          <h3>Forestilling 1</h3>
           <p>
-          <span x-text="`${quantity} bottles delivered`"></span>
-          <span x-show="howoften === 'weekly'">every week:-)</span> 
-          <span x-show="howoften === 'fortnight'">every second week:-)</span> 
-          <span x-show="howoften === 'month'">in the beginning of every month:-)</span> 
-          <span x-show="howoften === 'threemonths'">in the beginning of every third month:-)</span> 
+            Beskrivelse af forestilling
+            1
           </p>
+          <p>Spillested: Vox</p>
+          <p>
+            Spilledage: Tirsdag og
+            onsdag
+          </p>
+        </article>
 
-          <p><span>Price: </span><span class="font-bold" x-text="`${quantity * 75 + 49} DKK `"></span><span>per delivery including transport</span></p>
-        </div> 
-      
+        <article
+          class="forestilling bg-slate-100 p-3"
+          :class="{'hidden': !(['alledage', 'torsdag'].includes(spilledag) && ['allevenues', 'zebu'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+        >
+          <h3>Forestilling 2</h3>
+          <p>
+            Beskrivelse af forestilling
+            2
+          </p>
+          <p>Spillested: ZeBu</p>
+          <p>Spilledage: Torsdag</p>
+        </article>
+
+        <article
+          class="forestilling bg-slate-100 p-3"
+          :class="{'hidden': !(['alledage', 'onsdag', 'torsdag', 'fredag'].includes(spilledag) && ['allevenues', 'downunder'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+        >
+          <h3>Forestilling 3</h3>
+          <p>
+            Beskrivelse af forestilling
+            3
+          </p>
+          <p>Spillested: Donwunder</p>
+          <p>
+            Spilledage: Onsdag, torsdag
+            og fredag
+          </p>
+        </article>
+
+        <article
+          class="forestilling bg-slate-100 p-3"
+          :class="{'hidden': !(['alledage', 'fredag', 'lordag'].includes(spilledag) && ['allevenues', 'vox'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+        >
+          <h3>Forestilling 4</h3>
+          <p>
+            Beskrivelse af forestilling
+            4
+          </p>
+          <p>Spillested: Vox</p>
+          <p>
+            Spilledage: Fredag og lørdag
+          </p>
+        </article>
+
+        <article
+          class="forestilling bg-slate-100 p-3"
+          :class="{'hidden': !(['alledage', 'lordag'].includes(spilledag) && ['allevenues', 'vox'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+        >
+          <h3>Forestilling 5</h3>
+          <p>
+            Beskrivelse af forestilling
+            5
+          </p>
+          <p>Spillested: Vox</p>
+          <p>Spilledage: Lørdag</p>
+        </article>
+
+        <article
+          class="forestilling bg-slate-100 p-3"
+          :class="{'hidden': !(['alledage', 'torsdag', 'lordag'].includes(spilledag) && ['allevenues', 'zebu'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+        >
+          <h3>Forestilling 6</h3>
+          <p>
+            Beskrivelse af forestilling
+            6
+          </p>
+          <p>Spillested: ZeBu</p>
+          <p>
+            Spilledage: Torsdag og
+            lørdag
+          </p>
+        </article>
+
+        <article
+          class="forestilling bg-slate-100 p-3"
+          :class="{'hidden': !(['alledage', 'fredag'].includes(spilledag) && ['allevenues', 'downunder'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+        >
+          <h3>Forestilling 7</h3>
+          <p>
+            Beskrivelse af forestilling
+            7
+          </p>
+          <p>Spillested: Downunder</p>
+          <p>Spilledage: Fredag</p>
+        </article>
+
+        <p
+          id="ingenforestillinger"
+          class="hidden"
+        >
+          Ingen forestillinger - prøv et
+          nyt tid og sted:-)
+        </p>
       </section>
 
-        <footer class="py-8 flex justify-between">
-          <div class="">
-            <button id="knap2" class="border-2 border-black p-2" x-on:click="step = 'step1'" x-show="step === 'step2' || step === 'step3' && winetype === 'both'">&LeftArrow; Wine type</button>
-            <button id="knap3" class="border-2 border-black p-2" x-on:click="step = 'step2'" x-show="step === 'step3' && winetype !== 'both'">&LeftArrow; Quantity</button>
-            <button id="knap4" class="border-2 border-black p-2" x-on:click="step = 'step3'" x-show="step === 'step4'">&LeftArrow; Frequency</button>
-          </div>
-          <div class="">
-            <button id="knap2" class="border-2 border-black p-2" x-on:click="step = 'step2'" x-show="step === 'step1' && (winetype === 'red' || winetype === 'white')">Next &RightArrow;</button>
-            <button id="knap3" class="border-2 border-black p-2" x-on:click="step = 'step3'" x-show="step === 'step2' || step === 'step1' && winetype === 'both'">Frequency &RightArrow;</button>
-            <button id="knap4" class="border-2 border-black p-2" x-on:click="step = 'step4'" x-show="step === 'step3'">Confirmation &RightArrow;</button>
-            <button id="knap4" class="border-2 border-black p-2 bg-green-200" x-on:click="step = 'step4'" x-show="step === 'step4'">Put subscription in basket!</button>
-          </div>
-        </footer>
+      <footer>&copy; 2022</footer>
 
+      <script>
+        function ingenforestillinger() {
+          const skjulteforestillinger =
+            document.querySelectorAll(
+              ".forestilling.hidden"
+            ).length;
+          if (
+            skjulteforestillinger === 7
+          ) {
+            document
+              .querySelector(
+                "#ingenforestillinger"
+              )
+              .classList.remove(
+                "hidden"
+              );
+          } else {
+            document
+              .querySelector(
+                "#ingenforestillinger"
+              )
+              .classList.add("hidden");
+          }
+        }
+      </script>
     </main>
-    
-    <section class="mt-8 prose">
-      <ul>
-        <h3>1: Lav et projekt som normalt</h3>
-        <li>Lav et projekt, som normalt, ved hjælp af <a href="https://github.com/daviatkea/tailwind-template-e2022" alt="dannies tailwind starter">Dannies Tailwind starter</a></li>
-        <h3>2: Inkluder alpine.js</h3>
-        <li>Inkluder alpine.js (npm install alpinejs) + tilføj følgende i main.js, lige under <i>import "./style.css";</i>:</li>
-        <pre><code>import Alpine from 'alpinejs'
-window.Alpine = Alpine
-Alpine.start()</code></pre>
-        <li>Nu er du klar til at bruge både tailwind og alpine.js:-)</li>
-        <h3>3: Header, steps og footer</h3>
-        <li>En multistep-form er ofte delt op i en header med en "progess-indikator," selve trinene i multistep-formen og så en footer nederst. Sådan er min også delt op, og "header-steps-og-footer" er pakket ind i ét html-element (jeg har pakket det hele ind i en main).</li>
-        <h3>4: variable med x-data</h3>
-        <li>I min "main," der pakker hele multistep-formen ind, har jeg tilføjet en attribut: x-data. x-data attributten er alpine.js, og bruges til at definere alle de variable (const/var/let), der skal indgå i formularen:</li>
-<pre><code>x-data="{ step: 'step1', winetype: 'both', quantity: '6', howoften : 'weekly', amount : '4'}</code></pre>  
-        <li>Eksempelvis betyder <i>step: 'step1'</i> at der en variabel, der hedder step, og at default værdien for den er step1. Ligeledes er winetype: 'both' en variabel ved navn winetype, som har default-værdien both. På den måde kan jeg styre formularens default-værdier.</li> 
-        <h3>5: Headeren</h3>
-        <li>Efter at have defineret variablene til scriptet, kan vi lave vores header - oversigten over hvor langt brugeren er nået med de 4 trin:</li> 
-<pre><code>&#x3C;header class=&#x22;border-b border-slate-500 pt-4 pb-8&#x22;&#x3E;
-  &#x3C;p class=&#x22;pb-2&#x22;&#x3E;Configure your subscription in 4 easy steps: &#x3C;/p&#x3E;
-  &#x3C;ul class=&#x22;&#x22;&#x3E;
-    &#x3C;li class=&#x22;inline pr-2&#x22; :class=&#x22;{&#x27;border-black border-b&#x27;: step === &#x27;step1&#x27; }&#x22;&#x3E;1: Wine type&#x3C;/li&#x3E;
-    &#x3C;li class=&#x22;inline pr-2&#x22; :class=&#x22;{&#x27;border-black border-b&#x27;: step === &#x27;step2&#x27; }&#x22; &#x3E;2: Quantity&#x3C;/li&#x3E;
-    &#x3C;li class=&#x22;inline pr-2&#x22; :class=&#x22;{&#x27;border-black border-b&#x27;: step === &#x27;step3&#x27; }&#x22;&#x3E;3: Delivery frequency&#x3C;/li&#x3E;
-    &#x3C;li class=&#x22;inline pr-2&#x22; :class=&#x22;{&#x27;border-black border-b&#x27;: step === &#x27;step4&#x27; }&#x22;&#x3E;4: Confirmation&#x3C;/li&#x3E;
-  &#x3C;/ul&#x3E;
-&#x3C;/header&#x3E;</code></pre>
-        <li>Det er primært normal html, bort set fra stumperne, der starter med :class, f.eks. <i>:class="{'border-black border-b': step === 'step1' }"</i>, der er alpine.js </li>
-        <li>Denne lille stump sørger for at tilføje to (tailwind) classes <i>border-black border-b</i> når variablen step har værdien 'step1'. Ligeledes med 'step2, step3' osv.</li>
-        <h3>6: Footeren, x-on:click og x-show</h3>
-        <li>Som det næste, lad os se på footeren. Så har vi alt der pakker de forskellige steps ind:</li>
-<pre><code>&#x3C;footer class=&#x22;py-8 flex justify-between&#x22;&#x3E;
-  &#x3C;div class=&#x22;&#x22;&#x3E;
-    &#x3C;button id=&#x22;knap2&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step1&#x27;&#x22; x-show=&#x22;step === &#x27;step2&#x27;&#x22;&#x3E;&#x26;LeftArrow; Wine type&#x3C;/button&#x3E;
-    &#x3C;button id=&#x22;knap3&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step2&#x27;&#x22; x-show=&#x22;step === &#x27;step3&#x27;&#x22;&#x3E;&#x26;LeftArrow; Quantity&#x3C;/button&#x3E;
-    &#x3C;button id=&#x22;knap4&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step3&#x27;&#x22; x-show=&#x22;step === &#x27;step4&#x27;&#x22;&#x3E;&#x26;LeftArrow; Frequency&#x3C;/button&#x3E;
-  &#x3C;/div&#x3E;
-  &#x3C;div class=&#x22;&#x22;&#x3E;
-    &#x3C;button id=&#x22;knap2&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step2&#x27;&#x22; x-show=&#x22;step === &#x27;step1&#x27;&#x22;&#x3E;Quantity &#x26;RightArrow;&#x3C;/button&#x3E;
-    &#x3C;button id=&#x22;knap3&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step3&#x27;&#x22; x-show=&#x22;step === &#x27;step2&#x27;&#x22;&#x3E;Frequency &#x26;RightArrow;&#x3C;/button&#x3E;
-    &#x3C;button id=&#x22;knap4&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step4&#x27;&#x22; x-show=&#x22;step === &#x27;step3&#x27;&#x22;&#x3E;Confirmation &#x26;RightArrow;&#x3C;/button&#x3E;
-    &#x3C;button id=&#x22;knap4&#x22; class=&#x22;border-2 border-black p-2 bg-green-200&#x22; x-on:click=&#x22;step = &#x27;step4&#x27;&#x22; x-show=&#x22;step === &#x27;step4&#x27;&#x22;&#x3E;Put subscription in basket!&#x3C;/button&#x3E;
-  &#x3C;/div&#x3E;
-&#x3C;/footer&#x3E;</code></pre>
-      <li>Det meste er også standard html her, bort set fra x-on og x-show attributterne, der er alpine.js, <i>x-on:click="step = 'step1'" x-show="step === 'step2'"</i></li>
-      <li>x-on:click er en event listener, der lytter efter et klik. Når der klikkes på en knap, sættes værdien af step til den pågældende knaps værdi, f.eks. step1, step2, step3... x-show</li>
-      <li><i>x-show="step === 'step2'</i> dikterer hvornår et element skal vises/ikke vises. F.eks. betyder <i>x-show="step === 'step2'</i> at denne knap kun vises, når variablen step har værdien step2</li>
-      <h3>7: De 4 trin</h3>
-        <li>De 4 trin er alle pakket ind i en section, som ligger mellem headeren og footeren. Den bruges ikke til andet end lidt tailwind styling:</li>
-<pre><code>&#x3C;section class=&#x22;border-b border-slate-500 py-8&#x22;&#x3E;</code></pre>   
-      <h3>8: Trin 1 - formular med x-show og x-model</h3>
-      <li>Hvert trin ligner hinanden - men lad os se på dem enkeltvis. Først trin 1:</li>
-<pre><code>  &#x3C;!-- step 1 --&#x3E;
-  &#x3C;div id=&#x22;step1&#x22; x-show=&#x22;step === &#x27;step1&#x27;&#x22;&#x3E;
-    &#x3C;p  class=&#x22;mb-4&#x22;&#x3E;So: You love wine, and want wine delivered to your doorstep on subscription!&#x3C;/p&#x3E;
-    &#x3C;p class=&#x22;mb-4&#x22;&#x3E;What type of wine?&#x3C;/p&#x3E;
-    &#x3C;form id=&#x22;winesubscriptionform&#x22; class=&#x22;grid grid-cols-3&#x22;&#x3E;  
-      &#x3C;div&#x3E;
-        &#x3C;input type=&#x22;radio&#x22; id=&#x22;red&#x22; name=&#x22;winetype&#x22; value=&#x22;red&#x22; x-model=&#x22;winetype&#x22;&#x3E;
-        &#x3C;label for=&#x22;red&#x22;&#x3E;Red&#x3C;/label&#x3E;&#x3C;/div&#x3E;                    
-      &#x3C;div&#x3E;
-        &#x3C;input type=&#x22;radio&#x22; id=&#x22;white&#x22; name=&#x22;winetype&#x22; value=&#x22;white&#x22; x-model=&#x22;winetype&#x22;&#x3E;
-        &#x3C;label for=&#x22;white&#x22;&#x3E;White&#x3C;/label&#x3E;
-      &#x3C;/div&#x3E;
-      &#x3C;div&#x3E;
-        &#x3C;input type=&#x22;radio&#x22; id=&#x22;both&#x22; name=&#x22;winetype&#x22; value=&#x22;both&#x22; x-model=&#x22;winetype&#x22;&#x3E;
-        &#x3C;label for=&#x22;both&#x22;&#x3E;Both!&#x3C;/label&#x3E; 
-      &#x3C;/div&#x3E;
-    &#x3C;/form&#x3E;
-  &#x3C;/div&#x3E;</code></pre>     
-  <li>Trin 1 vises kun hvis <i>variablen step har værdien 'step1'</i> - ligesom vi så det i headeren og footeren.</li>
-  <li>Dernæst åbnes formularen i step 1 ved hjælp af et &#x3C;form&#x3E;-tag. Det samme &#x3C;form&#x3E;-tag bruges gennem de efterfølgende trin - derfor har form'en fået et id="winesubscriptionform", så vi løbende kan knytte nye formular-elementer til den:</li>
-  <li>Læg mærke til at der for hver valgmulighed i formularen er et &#x3C;input&#x3E;-element, som har en attribut ved navn x-model. x-model binder værdierne fra forumlaren sammen med de variable, der blev defineret i afsnit 4: variable med x-data. Det kaldes data-binding.</li>
-  <h3>9: Trin 2</h3>
-  <li>Trin 2 er næsten identisk med trin 1:</li>
-  <pre><code>   &#x3C;!-- step 2--&#x3E;
-    &#x3C;div id=&#x22;step2&#x22; x-show=&#x22;step === &#x27;step2&#x27;&#x22;&#x3E;
-      &#x3C;p&#x3E;How many bottles per delivery?&#x3C;/p&#x3E;                    
-      &#x3C;label for=&#x22;quantity&#x22;&#x3E;Choose how many bottles per delivery:&#x3C;/label&#x3E;
-      &#x3C;select name=&#x22;quantity&#x22; id=&#x22;quantity&#x22; x-model=&#x22;quantity&#x22; form=&#x22;winesubscriptionform&#x22;&#x3E;
-        &#x3C;option value=&#x22;6&#x22;&#x3E;6&#x3C;/option&#x3E;
-        &#x3C;option value=&#x22;12&#x22;&#x3E;12&#x3C;/option&#x3E;
-        &#x3C;option value=&#x22;18&#x22;&#x3E;18&#x3C;/option&#x3E;
-        &#x3C;option value=&#x22;24&#x22;&#x3E;24&#x3C;/option&#x3E;
-        &#x3C;option value=&#x22;30&#x22;&#x3E;30&#x3C;/option&#x3E;
-      &#x3C;/select&#x3E; 
-    &#x3C;/div&#x3E;</code></pre>
-      <li>Den primære forskel ligger i at x-show i dette tilfælde ser på om variablen step's værdi er sat til step2: <i>x-show="step === 'step2'"</i></li>
-      <li>Dernæst er formularen lidt forskellig - men det er primært html. Læg mærke til at formularen ikke har et &#x3C;form&#x3E;-tag rundt om, men bare refererer tilbage til formularen fra trin 1 ved hjælp af id'et form="winesubscriptionform" </li>
-      <li>&#x3C;select&#x3E;-elementet har også en x-model attribut: <i>x-model="quantity"</i>, som binder dataene til quantity-variablen.</li>
-    <h3>10: Trin 3</h3>
-    <li>Trin 3 minder meget om trin 2:</li>
-<pre><code>  &#x3C;!-- step 3 --&#x3E;
-  &#x3C;div id=&#x22;step3&#x22; x-show=&#x22;step === &#x27;step3&#x27;&#x22;&#x3E;
-    &#x3C;p&#x3E;How often do you want the wine delivered?&#x3C;/p&#x3E;                    
-    &#x3C;label for=&#x22;howoften&#x22;&#x3E;Delivery frequency:&#x3C;/label&#x3E;
-    &#x3C;select name=&#x22;howoften&#x22; id=&#x22;howoften&#x22; x-model=&#x22;howoften&#x22; form=&#x22;winesubscriptionform&#x22;&#x3E;
-      &#x3C;option value=&#x22;weekly&#x22;&#x3E;Every week!&#x3C;/option&#x3E;
-      &#x3C;option value=&#x22;fortnight&#x22;&#x3E;Every second week&#x3C;/option&#x3E;
-      &#x3C;option value=&#x22;month&#x22;&#x3E;Once a month&#x3C;/option&#x3E;
-      &#x3C;option value=&#x22;threemonths&#x22;&#x3E;Every third month &#x3C;/option&#x3E;
-    &#x3C;/select&#x3E; 
-  &#x3C;/div&#x3E;</code></pre>
-  <li>De væsentlige forskelle mellem trin 2 og 3 er:</li>
-  <li>x-show: x-show checker om variablen step er sat til step3: <i>x-show="step === 'step3'"</i></li>
-  <li>x-model: x-model="howoften" binder dataene fra formularen sammen med variablen howoften</li>
-    <h3>11: Trin 4</h3>
-<li>Trin 4 er lidt spændende - den opsummerer alle de data, der er tastet ind, på en bekræftelsesside:</li>
-<pre><code>&#x3C;!-- step 4--&#x3E;
-  &#x3C;div id=&#x22;step4&#x22; x-show=&#x22;step === &#x27;step4&#x27;&#x22; class=&#x22;prose&#x22;&#x3E;
-    &#x3C;h3 &#x3E;Your subscription:&#x3C;/h3&#x3E; 
-
-    &#x3C;p x-show=&#x22;winetype === &#x27;red&#x27;&#x22;&#x3E;Red wine only&#x3C;/p&#x3E; 
-    &#x3C;p x-show=&#x22;winetype === &#x27;white&#x27;&#x22;&#x3E;White wine only&#x3C;/p&#x3E;   
-    &#x3C;p x-show=&#x22;winetype === &#x27;both&#x27;&#x22;&#x3E;Both red and white wine - what a party!&#x3C;/p&#x3E; 
-
-    &#x3C;p&#x3E;
-    &#x3C;span x-text=&#x22;&#x60;${quantity} bottles delivered&#x60;&#x22;&#x3E;&#x3C;/span&#x3E;
-    &#x3C;span x-show=&#x22;howoften === &#x27;weekly&#x27;&#x22;&#x3E;every week:-)&#x3C;/span&#x3E; 
-    &#x3C;span x-show=&#x22;howoften === &#x27;fortnight&#x27;&#x22;&#x3E;every second week:-)&#x3C;/span&#x3E; 
-    &#x3C;span x-show=&#x22;howoften === &#x27;month&#x27;&#x22;&#x3E;in the beginning of every month:-)&#x3C;/span&#x3E; 
-    &#x3C;span x-show=&#x22;howoften === &#x27;threemonths&#x27;&#x22;&#x3E;in the beginning of every third month:-)&#x3C;/span&#x3E; 
-    &#x3C;/p&#x3E;
-
-    &#x3C;p&#x3E;&#x3C;span&#x3E;Price: &#x3C;/span&#x3E;&#x3C;span class=&#x22;font-bold&#x22; x-text=&#x22;&#x60;${quantity * 75 + 49} DKK &#x60;&#x22;&#x3E;&#x3C;/span&#x3E;&#x3C;span&#x3E;per delivery including transport&#x3C;/span&#x3E;&#x3C;/p&#x3E;
-  &#x3C;/div&#x3E; 
-
-&#x3C;/section&#x3E;</code></pre>
-<li>Som tidligere: x-show til at vise trinnet, når step variablen har værdien step4: <i>x-show="step === 'step4'"</i></li>
-<li> Dernæst tre paragraffer, som frevmises alt efter winetype variablens værdi. Er den "red, white eller both"?</li>
-<li>I trin 2 kunne man vælge antal flasker. Det bruges i &#x3C;span x-text=&#x22;&#x60;${quantity} bottles delivered&#x60;&#x22;&#x3E;&#x3C;/span&#x3E; til at outputte antallet af flasker fra quantity variablen samt en medfølgende tekst. x-text attributten er også alpine.js, og sætter teksten i et html-element til at være det der står i x-text attributtens værdi.</li>
-<li>Derunder er der 4 liniers x-show="howoften", som fremvises alt efter howoften-variablens værdi. </li>
-<li>Som det allersidste er der en pris-kalkulator: Den bruger (igen) x-text attributten til at sætte tekst-indholdet i et span-element: x-text="`${quantity * 75 + 49} DKK `". Her tages quantity-variablen, den ganges med 75 (kroner per flaske) og så tilføjes der 49 kroner (fragt).</li>
-<h3>12: Den samlede løsning</h3>
-<li>Når alle stumper samles, skulle det gerne give følgende "multistep-form komponent":</li>
-<pre><code>&#x3C;main class=&#x22;border-2 border-black p-8 pb-4 mb-8&#x22; id=&#x22;step&#x22; x-data=&#x22;{ step: &#x27;step1&#x27;, winetype: &#x27;both&#x27;, quantity: &#x27;6&#x27;, howoften : &#x27;weekly&#x27;, amount : &#x27;4&#x27;}&#x22;&#x3E;
-
-  &#x3C;header class=&#x22;border-b border-slate-500 pt-4 pb-8&#x22;&#x3E;
-    &#x3C;p class=&#x22;pb-2&#x22;&#x3E;Configure your subscription in 4 easy steps: &#x3C;/p&#x3E;
-    &#x3C;ul class=&#x22;&#x22;&#x3E;
-      &#x3C;li class=&#x22;inline pr-2&#x22; :class=&#x22;{&#x27;border-black border-b&#x27;: step === &#x27;step1&#x27; }&#x22;&#x3E;1: Wine type&#x3C;/li&#x3E;
-      &#x3C;li class=&#x22;inline pr-2&#x22; :class=&#x22;{&#x27;border-black border-b&#x27;: step === &#x27;step2&#x27; }&#x22; &#x3E;2: Quantity&#x3C;/li&#x3E;
-      &#x3C;li class=&#x22;inline pr-2&#x22; :class=&#x22;{&#x27;border-black border-b&#x27;: step === &#x27;step3&#x27; }&#x22;&#x3E;3: Delivery frequency&#x3C;/li&#x3E;
-      &#x3C;li class=&#x22;inline pr-2&#x22; :class=&#x22;{&#x27;border-black border-b&#x27;: step === &#x27;step4&#x27; }&#x22;&#x3E;4: Confirmation&#x3C;/li&#x3E;
-    &#x3C;/ul&#x3E;
-  &#x3C;/header&#x3E;
-
-  &#x3C;section class=&#x22;border-b border-slate-500 py-8&#x22;&#x3E;
-  &#x3C;!-- step 1 --&#x3E;
-  &#x3C;div id=&#x22;step1&#x22; x-show=&#x22;step === &#x27;step1&#x27;&#x22;&#x3E;
-    &#x3C;p  class=&#x22;mb-4&#x22;&#x3E;So: You love wine, and want wine delivered to your doorstep on subscription!&#x3C;/p&#x3E;
-    &#x3C;p class=&#x22;mb-4&#x22;&#x3E;What type of wine?&#x3C;/p&#x3E;
-    &#x3C;form id=&#x22;winesubscriptionform&#x22; class=&#x22;grid grid-cols-3&#x22;&#x3E;  
-      &#x3C;div&#x3E;
-        &#x3C;input type=&#x22;radio&#x22; id=&#x22;red&#x22; name=&#x22;winetype&#x22; value=&#x22;red&#x22; x-model=&#x22;winetype&#x22;&#x3E;
-        &#x3C;label for=&#x22;red&#x22;&#x3E;Red&#x3C;/label&#x3E;&#x3C;/div&#x3E;                    
-      &#x3C;div&#x3E;
-        &#x3C;input type=&#x22;radio&#x22; id=&#x22;white&#x22; name=&#x22;winetype&#x22; value=&#x22;white&#x22; x-model=&#x22;winetype&#x22;&#x3E;
-        &#x3C;label for=&#x22;white&#x22;&#x3E;White&#x3C;/label&#x3E;
-      &#x3C;/div&#x3E;
-      &#x3C;div&#x3E;
-        &#x3C;input type=&#x22;radio&#x22; id=&#x22;both&#x22; name=&#x22;winetype&#x22; value=&#x22;both&#x22; x-model=&#x22;winetype&#x22;&#x3E;
-        &#x3C;label for=&#x22;both&#x22;&#x3E;Both!&#x3C;/label&#x3E; 
-      &#x3C;/div&#x3E;
-    &#x3C;/form&#x3E;
-  &#x3C;/div&#x3E;
-  &#x3C;!-- step 2--&#x3E;
-  &#x3C;div id=&#x22;step2&#x22; x-show=&#x22;step === &#x27;step2&#x27;&#x22;&#x3E;
-    &#x3C;p&#x3E;How many bottles per delivery?&#x3C;/p&#x3E;                    
-    &#x3C;label for=&#x22;quantity&#x22;&#x3E;Choose how many bottles per delivery:&#x3C;/label&#x3E;
-    &#x3C;select name=&#x22;quantity&#x22; id=&#x22;quantity&#x22; x-model=&#x22;quantity&#x22; form=&#x22;winesubscriptionform&#x22;&#x3E;
-      &#x3C;option value=&#x22;6&#x22;&#x3E;6&#x3C;/option&#x3E;
-      &#x3C;option value=&#x22;12&#x22;&#x3E;12&#x3C;/option&#x3E;
-      &#x3C;option value=&#x22;18&#x22;&#x3E;18&#x3C;/option&#x3E;
-      &#x3C;option value=&#x22;24&#x22;&#x3E;24&#x3C;/option&#x3E;
-      &#x3C;option value=&#x22;30&#x22;&#x3E;30&#x3C;/option&#x3E;
-    &#x3C;/select&#x3E; 
-  &#x3C;/div&#x3E;
-  &#x3C;!-- step 3 --&#x3E;
-  &#x3C;div id=&#x22;step3&#x22; x-show=&#x22;step === &#x27;step3&#x27;&#x22;&#x3E;
-    &#x3C;p&#x3E;How often do you want the wine delivered?&#x3C;/p&#x3E;                    
-    &#x3C;label for=&#x22;howoften&#x22;&#x3E;Delivery frequency:&#x3C;/label&#x3E;
-    &#x3C;select name=&#x22;howoften&#x22; id=&#x22;howoften&#x22; x-model=&#x22;howoften&#x22; form=&#x22;winesubscriptionform&#x22;&#x3E;
-      &#x3C;option value=&#x22;weekly&#x22;&#x3E;Every week!&#x3C;/option&#x3E;
-      &#x3C;option value=&#x22;fortnight&#x22;&#x3E;Every second week&#x3C;/option&#x3E;
-      &#x3C;option value=&#x22;month&#x22;&#x3E;Once a month&#x3C;/option&#x3E;
-      &#x3C;option value=&#x22;threemonths&#x22;&#x3E;Every third month &#x3C;/option&#x3E;
-    &#x3C;/select&#x3E; 
-  &#x3C;/div&#x3E;
-  &#x3C;!-- step 4--&#x3E;
-  &#x3C;div id=&#x22;step4&#x22; x-show=&#x22;step === &#x27;step4&#x27;&#x22; class=&#x22;prose&#x22;&#x3E;
-    &#x3C;h3 &#x3E;Your subscription:&#x3C;/h3&#x3E; 
-
-    &#x3C;p x-show=&#x22;winetype === &#x27;red&#x27;&#x22;&#x3E;Red wine only&#x3C;/p&#x3E; 
-    &#x3C;p x-show=&#x22;winetype === &#x27;white&#x27;&#x22;&#x3E;White wine only&#x3C;/p&#x3E;   
-    &#x3C;p x-show=&#x22;winetype === &#x27;both&#x27;&#x22;&#x3E;Both red and white wine - what a party!&#x3C;/p&#x3E; 
-
-    &#x3C;p&#x3E;
-    &#x3C;span x-text=&#x22;&#x60;${quantity} bottles delivered&#x60;&#x22;&#x3E;&#x3C;/span&#x3E;
-    &#x3C;span x-show=&#x22;howoften === &#x27;weekly&#x27;&#x22;&#x3E;every week:-)&#x3C;/span&#x3E; 
-    &#x3C;span x-show=&#x22;howoften === &#x27;fortnight&#x27;&#x22;&#x3E;every second week:-)&#x3C;/span&#x3E; 
-    &#x3C;span x-show=&#x22;howoften === &#x27;month&#x27;&#x22;&#x3E;in the beginning of every month:-)&#x3C;/span&#x3E; 
-    &#x3C;span x-show=&#x22;howoften === &#x27;threemonths&#x27;&#x22;&#x3E;in the beginning of every third month:-)&#x3C;/span&#x3E; 
-    &#x3C;/p&#x3E;
-
-    &#x3C;p&#x3E;&#x3C;span&#x3E;Price: &#x3C;/span&#x3E;&#x3C;span class=&#x22;font-bold&#x22; x-text=&#x22;&#x60;${quantity * 75 + 49} DKK &#x60;&#x22;&#x3E;&#x3C;/span&#x3E;&#x3C;span&#x3E;per delivery including transport&#x3C;/span&#x3E;&#x3C;/p&#x3E;
-  &#x3C;/div&#x3E; 
-
-&#x3C;/section&#x3E;
-
-  &#x3C;footer class=&#x22;py-8 flex justify-between&#x22;&#x3E;
-    &#x3C;div class=&#x22;&#x22;&#x3E;
-      &#x3C;button id=&#x22;knap2&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step1&#x27;&#x22; x-show=&#x22;step === &#x27;step2&#x27;&#x22;&#x3E;&#x26;LeftArrow; Wine type&#x3C;/button&#x3E;
-      &#x3C;button id=&#x22;knap3&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step2&#x27;&#x22; x-show=&#x22;step === &#x27;step3&#x27;&#x22;&#x3E;&#x26;LeftArrow; Quantity&#x3C;/button&#x3E;
-      &#x3C;button id=&#x22;knap4&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step3&#x27;&#x22; x-show=&#x22;step === &#x27;step4&#x27;&#x22;&#x3E;&#x26;LeftArrow; Frequency&#x3C;/button&#x3E;
-    &#x3C;/div&#x3E;
-    &#x3C;div class=&#x22;&#x22;&#x3E;
-      &#x3C;button id=&#x22;knap2&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step2&#x27;&#x22; x-show=&#x22;step === &#x27;step1&#x27;&#x22;&#x3E;Quantity &#x26;RightArrow;&#x3C;/button&#x3E;
-      &#x3C;button id=&#x22;knap3&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step3&#x27;&#x22; x-show=&#x22;step === &#x27;step2&#x27;&#x22;&#x3E;Frequency &#x26;RightArrow;&#x3C;/button&#x3E;
-      &#x3C;button id=&#x22;knap4&#x22; class=&#x22;border-2 border-black p-2&#x22; x-on:click=&#x22;step = &#x27;step4&#x27;&#x22; x-show=&#x22;step === &#x27;step3&#x27;&#x22;&#x3E;Confirmation &#x26;RightArrow;&#x3C;/button&#x3E;
-      &#x3C;button id=&#x22;knap4&#x22; class=&#x22;border-2 border-black p-2 bg-green-200&#x22; x-on:click=&#x22;step = &#x27;step4&#x27;&#x22; x-show=&#x22;step === &#x27;step4&#x27;&#x22;&#x3E;Put subscription in basket!&#x3C;/button&#x3E;
-    &#x3C;/div&#x3E;
-  &#x3C;/footer&#x3E;
-
-&#x3C;/main&#x3E;</code></pre>
-</ul>
-</section>
-    <script type="module" src="./main.js"></script>
   </body>
 </html>

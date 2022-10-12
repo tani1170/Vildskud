@@ -6,31 +6,29 @@ module.exports = {
   theme: {
     backgroundImage: {
       ladydance:
-        "url('/img/ladydance.png')",
+        "url('/img/ladydance.svg')",
       ladyread:
-        "url('/img/ladyread.png')",
+        "url('/img/ladyread.svg')",
       ladydrink:
-        "url('/img/ladydrink.png')",
+        "url('/img/ladydrink.svg')",
       twobike:
-        "url('/img/twobike.png')",
+        "url('/img/twobike.svg')",
     },
     fontSize: {
       h6: ["59px"],
 
       // DESK STØRRELSER
-      h1desk: ["96px"],
-      h2desk: ["48px"],
-      h3desk: ["38px"],
-      h4desk: ["38px"],
+      h1desk: ["60px"],
+      h2desk: ["38px"],
+      h3desk: ["28px"],
+      h4desk: ["48px"],
       h5desk: ["48px"],
-
-      btnpdesk: ["40px"],
-      btnsdesk: ["30px"],
       navdesk: ["59px"],
       undernavdesk: ["36px"],
-      bodydesk: ["25px"],
+      bodydesk: ["20px"],
       inputdesk: ["24px"],
       footerdesk: ["20px"],
+      stepsdesk: ["200px"],
 
       // MOBIL STØRRELSER
       h1: ["48px"],
@@ -38,13 +36,14 @@ module.exports = {
       h3: ["25px"],
       h4: ["25px"],
       h5: ["36px"],
-      btnp: ["24px"],
-      btns: ["24px"],
+      btnp: ["20px"],
+      btns: ["20px"],
       nav: ["25px"],
       undernav: ["20px"],
       body: ["16px"],
       input: ["16px"],
       footer: ["20px"],
+      steps: ["150px"],
     },
     colors: {
       blue: "#1c4efe",
@@ -53,6 +52,7 @@ module.exports = {
       footerpink: "#e1dbdb",
       card: "#efefef",
       white: "#ffffff",
+      black: "#000000",
     },
 
     fontFamily: {
@@ -70,6 +70,7 @@ module.exports = {
       link: [""],
       bodyfooter: ["Times New Roman"],
       body: ["Kodchasan"],
+      step: ["Londrina Solid"],
     },
     extend: {},
   },
@@ -78,4 +79,5 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("daisyui"),
   ],
+  
 };
