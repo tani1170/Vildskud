@@ -57,6 +57,10 @@ export default defineConfig({
           __dirname,
           "src/teamet.html"
         ),
+        koeb: resolve(
+          __dirname,
+          "src/billetkoeb.html"
+        ),
 
         // about: resolve(__dirname, "src/about.html"),
       },
