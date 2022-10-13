@@ -13,6 +13,10 @@ module.exports = {
         "url('/img/ladydrink.svg')",
       twobike:
         "url('/img/twobike.svg')",
+      letterbg:
+        "url('/img/desk_bg.webp')",
+      letterbgmob:
+        "url('/img/baggrund_mob.webp')",
     },
     fontSize: {
       h6: ["59px"],
@@ -23,7 +27,7 @@ module.exports = {
       h3desk: ["28px"],
       h4desk: ["48px"],
       h5desk: ["48px"],
-      navdesk: ["59px"],
+      navdesk: ["35px"],
       undernavdesk: ["36px"],
       bodydesk: ["20px"],
       inputdesk: ["24px"],
@@ -42,7 +46,7 @@ module.exports = {
       undernav: ["20px"],
       body: ["16px"],
       input: ["16px"],
-      footer: ["20px"],
+      footer: ["16px"],
       steps: ["150px"],
     },
     colors: {
@@ -66,7 +70,7 @@ module.exports = {
       btnsek: ["Inter"],
       nav: ["Times New Roman"],
       input: ["Kodchasan"],
-      linkfooter: ["Times New Roman"],
+      footer: ["Times New Roman"],
       link: [""],
       bodyfooter: ["Times New Roman"],
       body: ["Kodchasan"],
@@ -79,5 +83,4 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("daisyui"),
   ],
-  
 };
