@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/vite.svg"
+    />
     <link
       rel="preconnect"
       href="https://fonts.googleapis.com"
@@ -20,10 +24,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
-
-    <title>
-      Vildskud |GO GO YO-YOKU
-    </title>
+    <title>Vildskud</title>
     <script type="module" crossorigin src="./assets/main.3c8d3003.js"></script>
     <link rel="stylesheet" href="./assets/main.8a3cdaf6.css">
   </head>
@@ -31,6 +32,7 @@
   <body
     class="bg-letterbgmob bg-cover lg:bg-letterbg"
   >
+    <!-- navigation -->
     <div
       class="w-full bg-red font-nav text-nav text-black lg:text-navdesk"
     >
@@ -254,256 +256,337 @@
       </div>
     </div>
 
-    <!-- INDHOLD -->
-    <section
-      class="m-10 grid gap-10 border-2 border-blue bg-white p-5"
+    <!-- Køb -->
+    <main
+      class="m-10 mb-8 border-2 border-blue bg-white p-8 pb-4"
+      id="step"
+      x-data="{ step: 'step1', billettype: '', antal: '1', dato : '2.august'}"
     >
       <div
-        class="grid justify-center lg:grid-cols-3 lg:grid-rows-1"
+        class="mb-8 border-2 border-blue pt-4 pb-8 lg:mx-96"
       >
-        <h1
-          class="mb-6 font-h1 text-h1 font-bold lg:col-start-2 lg:mb-0 lg:text-h1desk"
-        >
-          GO GO YO-YOKU
-        </h1>
-        <a
-          class="font-body text-body hover:text-blue hover:underline lg:col-start-1 lg:row-start-1 lg:ml-10 lg:mt-10"
-          href="forestillinger.html"
-          >Tilbage til forestillinger</a
-        >
-      </div>
-
-      <!-- INFORMATOIN OM FORESTILING -->
-      <div
-        class="grid gap-5 lg:mx-28 lg:mb-10 lg:grid-rows-1 lg:gap-10"
-      >
-        <div
-          class="lg:grid lg:grid-cols-3 lg:grid-rows-1 lg:gap-10"
-        >
-          <div
-            class="mb-5 w-full overflow-hidden lg:col-start-1 lg:row-start-1"
+        <header>
+          <h1
+            class="flex justify-center self-center py-5 pb-2 text-h1 lg:text-h1desk"
           >
-            <img
-              class="object-contain"
-              src="./assets/Gogo.b1f0b7c7.webp"
-              alt="go go yo-yoku"
-            />
+            BILLETKØB
+          </h1>
+          <!-- <ul class="">
+        <li
+          class="inline pr-2"
+          :class="{'border-black border-b': step === 'step1' }"
+        >
+          1: Billettype
+        </li>
+        <li
+          class="inline pr-2"
+          :class="{'border-black border-b': step === 'step2' }"
+        >
+          2: Antal
+        </li>
+        <li
+          class="inline pr-2"
+          :class="{'border-black border-b': step === 'step3' }"
+        >
+          3: Dag
+        </li>
+        <li
+          class="inline pr-2"
+          :class="{'border-black border-b': step === 'step4' }"
+        >
+          4: Bekræftelse
+        </li>
+      </ul> -->
+        </header>
+
+        <section
+          class="mt-5 border-b border-t border-blue px-12 py-8"
+        >
+          <!-- step 1  -- BILLETTYPE -->
+          <div
+            id="step1"
+            x-show="step === 'step1'"
+          >
+            <p
+              class="mb-10 font-body text-body lg:text-bodydesk"
+            >
+              Vælg billettype
+            </p>
+            <form
+              id="billetkoeb"
+              class="flex flex-col gap-5"
+            >
+              <div>
+                <input
+                  type="radio"
+                  id="endag"
+                  name="billetype"
+                  value="endag"
+                  x-model="billettype"
+                />
+                <label
+                  class="font-body text-body lg:text-bodydesk"
+                  for="endag"
+                  >Endags-billet 120
+                  KR</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="partout"
+                  name="billettype"
+                  value="partout"
+                  x-model="billettype"
+                />
+                <label
+                  class="font-body text-body lg:text-bodydesk"
+                  for="partout"
+                  >Partout-billet 295
+                  KR</label
+                >
+              </div>
+            </form>
           </div>
 
+          <!-- step 2  --  DATO -->
           <div
-            itemsscope
-            itemstype="https://schema.org/TheaterEvent"
-            class="grid gap-3 font-body text-body lg:col-start-2 lg:row-start-1 lg:flex lg:flex-col lg:text-bodydesk"
+            id="step2"
+            x-show="step === 'step2'"
+            class="flex flex-col gap-10"
           >
-            <li
-              class="flex list-none gap-5"
+            <p
+              class="font-body text-body lg:text-bodydesk"
             >
-              <span class="font-bold">
-                Venue:</span
+              Hvilken dag vil du købe
+              billetter til?
+            </p>
+            <div class="grid">
+              <label
+                class="font-body text-body lg:text-bodydesk"
+                for="dato"
+                >Endags-billet til d.
+              </label>
+              <select
+                name="dato"
+                id="dato"
+                x-model="dato"
+                form="billetkoeb"
+                class="border-2 border-blue lg:w-56"
               >
-              <ul itemprop="location">
-                Xenon - Teaterhuset
-              </ul>
-            </li>
-            <li
-              class="flex list-none gap-5"
+                <option
+                  value="2.augsut"
+                >
+                  2. august
+                </option>
+                <option
+                  value="3.august"
+                >
+                  3. august
+                </option>
+                <option
+                  value="4.augsut"
+                >
+                  4. august
+                </option>
+                <option
+                  value="5.august"
+                >
+                  5. august
+                </option>
+                <option
+                  value="6.august"
+                >
+                  6. august
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <!-- step 3  -- ANTAL  -->
+          <div
+            id="step3"
+            x-show="step === 'step3'"
+            class="flex flex-col gap-10"
+          >
+            <p
+              class="font-body text-body lg:text-bodydesk"
+            >
+              Hvor mange antal billetter
+              ønsker du?
+            </p>
+            <div class="grid">
+              <label
+                class="font-body text-body lg:text-bodydesk"
+                for="antal"
+                >Vælg antal
+                billetter:</label
+              >
+              <select
+                name="antal"
+                id="antal"
+                x-model="antal"
+                form="billetkoeb"
+                class="border-2 border-blue lg:w-56"
+              >
+                <option value="1">
+                  1
+                </option>
+                <option value="2">
+                  2
+                </option>
+                <option value="3">
+                  3
+                </option>
+                <option value="4">
+                  4
+                </option>
+                <option value="5">
+                  5
+                </option>
+                <option value="6">
+                  5
+                </option>
+              </select>
+            </div>
+          </div>
+          <!-- step 4-->
+          <div
+            id="step4"
+            x-show="step === 'step4'"
+            class="prose"
+          >
+            <h3
+              class="lg:text-bodyh3 font-h3 text-h3"
+            >
+              Din kurv
+            </h3>
+
+            <p
+              class="font-body text-body lg:text-bodydesk"
             >
               <span
-                itemprop="duration"
+                x-text="`Du har valgt ${antal} `"
+              ></span>
+              <span
+                x-show="billettype === 'endag'"
+              >
+                en endags-
+              </span>
+              <span
+                x-show="billettype === 'partout'"
+              >
+                partout-
+              </span>
+
+              <span
+                x-show="antal === '1'"
+                >billet</span
+              >
+              <span
+                x-show="antal === '2'"
+                >billetter</span
+              >
+              <span
+                x-show="antal === '3'"
+                >billetter</span
+              >
+              <span
+                x-show="antal === '4'"
+                >billetter</span
+              >
+              <span
+                x-show="antal === '5'"
+                >billetter</span
+              >
+              <span
+                x-show="antal === '6'"
+                >billetter</span
+              >
+            </p>
+
+            <p
+              class="font-text font-body lg:text-bodydesk"
+            >
+              <span>Pris: </span
+              ><span
                 class="font-bold"
-              >
-                Varighed:</span
-              >
-              <ul></ul>
-            </li>
-            <li
-              class="flex list-none gap-5"
-            >
-              <span class="font-bold">
-                Billetter:</span
-              >
-              <ul>
-                120 -295kr
-              </ul>
-            </li>
-            <li
-              class="mt-5 list-none gap-5"
-            >
-              <span class="font-bold">
-                Instruktør</span
-              >
-              <ul itemprop="director">
-                August Aabo
-              </ul>
-            </li>
-            <li class="list-none gap-5">
-              <span class="font-bold"
-                >Skuespillere</span
-              >
-              <ul itemprop="actor">
-                Ann Celie Fønsskov
-              </ul>
-              <ul itemprop="actor">
-                Sally Klie
-              </ul>
-              <ul itemprop="actor">
-                & Luca Strom
-              </ul>
-            </li>
+                x-text="`${antal * 120} DKK `"
+              ></span>
+            </p>
           </div>
-          <div
-            itemsscope
-            itemstype="https://schema.org/TheaterEvent"
-            class="grid gap-2 font-body text-body lg:col-start-3 lg:row-start-1 lg:flex lg:flex-col lg:text-bodydesk"
-          >
-            <li class="list-none gap-5">
-              <span class="font-bold">
-                Tekniker</span
-              >
-              <ul itemprop="composer">
-                Niels Eske Juul Andersen
-              </ul>
-            </li>
-            <li class="list-none gap-5">
-              <span class="font-bold">
-                Scenograf</span
-              >
-              <ul>
-                Ida Sofie Larsen
-              </ul>
-            </li>
-            <li class="list-none gap-5">
-              <span class="font-bold">
-                Komponist</span
-              >
-              <ul itemprop="composer">
-                Simon Klie Lyrik Musa
-                Mijia
-              </ul>
-            </li>
-            <li class="list-none gap-5">
-              <span class="font-bold">
-                Fotograf</span
-              >
-              <ul>
-                Tenzin oliva Gustenhoff
-                &
-              </ul>
-              <ul>
-                Liva Bech Holskob
-              </ul>
-            </li>
-            <li class="list-none gap-5">
-              <span class="font-bold">
-                Konsulent</span
-              >
-              <ul>
-                Emil Christiansen
-              </ul>
-            </li>
-            <div
-              class="mt-5 flex justify-center lg:flex-row-reverse"
-            >
-              <button
-                class="self-center rounded-md bg-blue px-5 py-5 font-btnpri text-btnp text-white hover:border-2 hover:border-blue hover:bg-white hover:text-blue active:border-2 active:border-blue active:bg-white active:text-blue lg:mt-20"
-              >
-                <a
-                  href="stepbystep.html"
-                  >KØB BILLET HER</a
-                >
-              </button>
-            </div>
-          </div>
-        </div>
+        </section>
 
-        <div
-          class="mb-5 grid lg:grid-cols-2 lg:grid-rows-1 lg:gap-10"
+        <!-- KNAPPER -->
+        <footer
+          class="m-0 flex justify-between py-4"
         >
-          <div
-            class="lg:col-start-1 lg:row-span-2 lg:row-start-1"
-          >
-            <p
-              class="text-justify font-body text-body lg:text-bodydesk"
+          <!-- VENSTRE KNAPPER -->
+          <div class="">
+            <button
+              id="knap2"
+              class="ml-4 border-2 border-blue p-3 font-body text-body lg:text-bodydesk"
+              x-on:click="step = 'step1'"
+              x-show="step === 'step2' || step === 'step3' && billettype === 'partout'"
             >
-              En forestilling af
-              KOPFKINO Find din yoyo
-              frem og sæt dig selv fri i
-              en skov. Det går godt for
-              de tre roomies med at dele
-              lejlighed, men kæft det
-              går dårligt med at være
-              mennesker i en
-              nulfejlskultur, hvor alt
-              handler om meritter og
-              milepælsplaner. Rakel er
-              blevet droppet af sin eks,
-              Lua kommer bare aldrig
-              videre til prøverne på
-              Skuespillerskolen og
-              Skjold dater alarmerende
-              uhyggeligt meget. Ikke
-              flere undvigemanøvre for
-              at blive stemplet som
-              fiasko. Ikke flere hvide
-              løgne for at være bedre
-              end man er. Ikke mere
-              pleaser-pis for at rykke
-              op i sit selvskabte
-              hierarki. Ud med skam og
-              ind med sandhed.
-            </p>
+              &LeftArrow; Billettype
+            </button>
+            <button
+              id="knap3"
+              class="ml-4 border-2 border-blue p-3 font-body text-body lg:text-bodydesk"
+              x-on:click="step = 'step2'"
+              x-show="step === 'step3' && billettype !== 'partout'"
+            >
+              &LeftArrow; Dato
+            </button>
+            <button
+              id="knap4"
+              class="ml-4 border-2 border-blue p-3 font-body text-body lg:text-bodydesk"
+              x-on:click="step = 'step3'"
+              x-show="step === 'step4'"
+            >
+              &LeftArrow; Antal
+            </button>
           </div>
-          <div
-            class="lg:col-start-2 lg:row-start-1"
-          >
-            <p
-              class="text-justify font-body text-body lg:text-bodydesk"
+
+          <!-- HØJRE KNAPPER -->
+          <div class="">
+            <button
+              id="knap2"
+              class="mr-4 border-2 border-blue p-3 font-body text-body lg:text-bodydesk"
+              x-on:click="step = 'step2'"
+              x-show="step === 'step1' && (billettype === 'endag')"
             >
-              Med inspiration i
-              Shinrin-Yoku,
-              anti-happy-go-lucky-mentalitet,
-              vigtige venner og svære
-              erkendelser tager Teater
-              Kopfkino os med på en
-              komisk dannelsesrejse midt
-              i bøvlede livsprocesser.
-            </p>
-            <div
-              class="mt-5 flex justify-center lg:flex-row-reverse"
+              Dato &RightArrow;
+            </button>
+            <button
+              id="knap3"
+              class="mr-4 border-2 border-blue p-3 font-body text-body lg:text-bodydesk"
+              x-on:click="step = 'step3'"
+              x-show="step === 'step2' || step === 'step1' && billettype === 'partout'"
             >
-              <button
-                class="self-center rounded-md bg-blue px-5 py-5 font-btnpri text-btnp text-white hover:border-2 hover:border-blue hover:bg-white hover:text-blue active:border-2 active:border-blue active:bg-white active:text-blue lg:mt-20"
-              >
-                <a
-                  href="stepbystep.html"
-                  >KØB BILLET HER</a
-                >
-              </button>
-            </div>
+              Antal &RightArrow;
+            </button>
+            <button
+              id="knap4"
+              class="mr-4 border-2 border-blue p-3"
+              x-on:click="step = 'step4'"
+              x-show="step === 'step3'"
+            >
+              Din kurv &RightArrow;
+            </button>
+            <button
+              id="knap4"
+              class="mr-8 border-2 border-blue bg-blue p-3 font-body text-body text-white lg:text-bodydesk"
+              x-on:click="step = 'step4'"
+              x-show="step === 'step4'"
+            >
+              Gå til betaling
+            </button>
           </div>
-        </div>
+        </footer>
       </div>
-    </section>
-
-    <!-- RESERVER CTA -->
-    <div
-      class="slide-in-bottom fixed bottom-0 w-screen bg-pink p-3"
-    >
-      <p
-        class="flex place-items-center justify-center font-body text-body font-bold"
-      >
-        Har du købt billet? Så husk at
-        reservere din plads
-
-        <a
-          class="text-blue underline"
-          href=""
-        >
-          her.*</a
-        >
-      </p>
-    </div>
-
+    </main>
     <!-- Footer -->
     <footer
       class="grid place-items-center bg-footerpink py-10 lg:grid-cols-4 lg:grid-rows-2"
@@ -543,7 +626,7 @@
             </div>
           </div>
           <a
-            class="font-footer text-footerlg:col-start-1 lg:row-start-2"
+            class="text-footerlg:col-start-1 font-footer lg:row-start-2"
             href="mailto:info@vildskud.dk"
             >info@vildskud.dk</a
           >
@@ -590,13 +673,10 @@
         Festival
       </p>
     </footer>
+
     
     <script
       src="//unpkg.com/alpinejs"
-      defer
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
       defer
     ></script>
   </body>
