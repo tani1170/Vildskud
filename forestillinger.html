@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Kodchasan:wght@300;400;700&family=Londrina+Solid&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Vildskud</title>
+    <script type="module" crossorigin src="./assets/main.3c8d3003.js"></script>
+    <link rel="stylesheet" href="./assets/main.1013461f.css">
+  </head>
+
+  <body class="">
+    <div
+      class="fixed flex self-end"
+    ></div>
+
+    <!-- RABAT CTA -->
+    <div
+      class="slide-in-bottom fixed bottom-0 w-screen bg-pink p-3"
+    >
+      <p
+        class="flex place-items-center justify-center font-body text-body font-bold"
+      >
+        Køb din billet i dag og få 10%
+        rabat og valgfri drikkevare med
+        i dit køb*
+      </p>
+    </div>
+
+    <!--  -->
+    <section
+      class="m-10 grid gap-10 border-2 border-blue bg-white pt-8 lg:m-16"
+      id="step"
+      x-data="{ spilledag: 'alledage', skjulteforestillinger : 0 }"
+    >
+      <div>
+        <h1
+          class="mb-8 flex justify-center font-h1 text-h1 lg:text-h1desk"
+        >
+          Forestillinger
+        </h1>
+      </div>
+
+      <!-- CTA KØB BILLET -->
+      <div
+        class="slide-in-right fixed bottom-16 right-0"
+      >
+        <button
+          class="pulsate-fwd font-inputdesk w-56 rounded-md bg-blue px-2 py-5 font-input text-white"
+        >
+          Køb din billet her!
+        </button>
+      </div>
+
+      <!-- rabat CTA -->
+
+      <!-- Dropdown filter -->
+
+      <form class="flex justify-center">
+        <div>
+          <label for="spilledag"
+            >Vælg spilledag:</label
+          >
+          <select
+            name="spilledag"
+            id="spilledag"
+            class="border border-blue"
+            x-model="spilledag"
+            form="filtre"
+            x-on:change="$nextTick(() => { ingenforestillinger() });"
+          >
+            <option value="alledage">
+              Alle dage
+            </option>
+            <option value="2aug">
+              2. august
+            </option>
+            <option value="3aug">
+              3. august
+            </option>
+            <option value="4aug">
+              4. august
+            </option>
+            <option value="5aug">
+              5. august
+            </option>
+            <option value="6aug">
+              6. august
+            </option>
+          </select>
+        </div>
+      </form>
+
+      <!-- Cards -->
+
+      <div
+        class="forestillinger mb-8 grid justify-center gap-5 overflow-hidden lg:grid-cols-3 lg:place-items-center lg:px-48"
+      >
+        <!-- Frygten for -->
+        <div
+          class="forestilling"
+          :class="{'hidden': !(['alledage', '5aug','6aug'].includes(spilledag)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <div class="">
+            <button
+              class="grid h-56 w-72 place-items-center justify-center border-2 border-blue hover:bg-blue hover:text-white active:bg-blue active:text-white"
+            >
+              <h3
+                class="text-center font-h1 text-h1"
+              >
+                Frygten for at leve
+              </h3>
+            </button>
+          </div>
+        </div>
+
+        <!-- Vild med dig -->
+        <div
+          class="forestilling"
+          :class="{'hidden': !(['alledage', '2aug','3aug'].includes(spilledag)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <div class="">
+            <button
+              class="grid h-56 w-72 place-items-center justify-center border-2 border-blue hover:bg-blue hover:text-white active:bg-blue active:text-white"
+            >
+              <h3
+                class="text-center font-h1 text-h1"
+              >
+                Vild med dig
+              </h3>
+            </button>
+          </div>
+        </div>
+
+        <!--  Mand ligger som man har redt -->
+        <div
+          class="forestilling"
+          :class="{'hidden': !(['alledage', '5aug'].includes(spilledag)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <div class="">
+            <button
+              class="grid h-56 w-72 place-items-center justify-center border-2 border-blue hover:bg-blue hover:text-white active:bg-blue active:text-white"
+            >
+              <h3
+                class="text-center font-h1 text-h1"
+              >
+                Mand ligger som man har
+                redt
+              </h3>
+            </button>
+          </div>
+        </div>
+
+        <!--   GO GO YO-YUKO -->
+        <div
+          class="forestilling"
+          :class="{'hidden': !(['alledage', '4aug','5aug'].includes(spilledag)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <div class="">
+            <button
+              class="grid h-56 w-72 place-items-center justify-center border-2 border-blue hover:bg-blue hover:text-white active:bg-blue active:text-white"
+            >
+              <h3
+                class="text-center font-h1 text-h1"
+              >
+                GO GO YO-YUKO
+              </h3>
+            </button>
+          </div>
+        </div>
+
+        <!--       Det levende rum -->
+        <div
+          class="forestilling"
+          :class="{'hidden': !(['alledage', '4aug','5aug'].includes(spilledag)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <div class="">
+            <button
+              class="grid h-56 w-72 place-items-center justify-center border-2 border-blue hover:bg-blue hover:text-white active:bg-blue active:text-white"
+            >
+              <h3
+                class="text-center font-h1 text-h1"
+              >
+                Det levende rum
+              </h3>
+            </button>
+          </div>
+        </div>
+
+        <!--Re-birth-->
+        <div
+          class="forestilling"
+          :class="{'hidden': !(['alledage', '4aug','5aug'].includes(spilledag)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <div class="">
+            <button
+              class="grid h-56 w-72 place-items-center justify-center border-2 border-blue hover:bg-blue hover:text-white active:bg-blue active:text-white"
+            >
+              <h3
+                class="text-center font-h1 text-h1"
+              >
+                Re-birth
+              </h3>
+            </button>
+          </div>
+        </div>
+
+        <!-- What fires together wires together-->
+        <div
+          class="forestilling"
+          :class="{'hidden': !(['alledage', '2aug','3aug'].includes(spilledag)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <div class="">
+            <button
+              class="grid h-56 w-72 place-items-center justify-center border-2 border-blue hover:bg-blue hover:text-white active:bg-blue active:text-white"
+            >
+              <h3
+                class="text-center font-h1 text-h1"
+              >
+                What fires together
+                wires together
+              </h3>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="grid place-items-center bg-footerpink py-10 lg:grid-cols-4 lg:grid-rows-2"
+    >
+      <img
+        class="h-32 pb-10 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:h-44"
+        src="./assets/vildskudlogo.5628e10d.svg"
+        alt=""
+      />
+      <div
+        class="grid gap-10 lg:col-start-3 lg:row-span-2 lg:row-start-1"
+      >
+        <div
+          class="grid place-items-center gap-2 self-center lg:col-start-2 lg:row-start-1 lg:grid-cols-3 lg:grid-rows-2 lg:place-items-start"
+        >
+          <div
+            class="grid place-items-center lg:col-start-3 lg:row-start-2 lg:flex lg:flex-col"
+          >
+            <p
+              class="font-body text-body uppercase lg:col-start-3 lg:row-start-1"
+            >
+              Sociale medier
+            </p>
+            <div
+              class="my-2 flex gap-5 lg:gap-12"
+            >
+              <a
+                class="font-body text-body text-blue underline"
+                href=""
+                >Instagram</a
+              >
+              <a
+                class="font-body text-body text-blue underline"
+                href=""
+                >Facebook</a
+              >
+            </div>
+          </div>
+          <a
+            class="font-body text-body lg:col-start-1 lg:row-start-2"
+            href="mailto:info@vildskud.dk"
+            >info@vildskud.dk</a
+          >
+          <a
+            class="font-body text-body lg:col-start-2 lg:row-start-2"
+            href="tel:+45 12 34 56 78"
+            >+45 1234 5678</a
+          >
+        </div>
+        <div
+          class="flex flex-col place-items-center gap-4 lg:col-start-2 lg:row-start-2 lg:flex-row lg:gap-20"
+        >
+          <a
+            class="font-body text-body uppercase"
+            href="kontakt.html"
+            >Kontakt</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href=""
+            >Samarbejdspartner</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href=""
+            >Cookies</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href=""
+            >Privatlivspolitik</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href="sitemap.html"
+            >Sitemap</a
+          >
+        </div>
+      </div>
+      <p
+        class="text-2xs mt-6 flex justify-center font-body lg:col-start-1 lg:row-start-3"
+      >
+        Copyright © 2023 • Vildskud
+        Festival
+      </p>
+    </footer>
+    
+    <script
+      src="//unpkg.com/alpinejs"
+      defer
+    ></script>
+
+    <script>
+      function ingenforestillinger() {
+        const skjulteforestillinger =
+          document.querySelectorAll(
+            ".forestilling.hidden"
+          ).length;
+        if (
+          skjulteforestillinger === 7
+        ) {
+          document
+            .querySelector(
+              "#ingenforestillinger"
+            )
+            .classList.remove("hidden");
+        } else {
+          document
+            .querySelector(
+              "#ingenforestillinger"
+            )
+            .classList.add("hidden");
+        }
+      }
+    </script>
+    <style>
+      .hide-scroll-bar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .hide-scroll-bar::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </body>
+</html>

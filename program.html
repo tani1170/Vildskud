@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Kodchasan:wght@300;400;700&family=Londrina+Solid&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>Vildskud</title>
+    <script type="module" crossorigin src="./assets/main.3c8d3003.js"></script>
+    <link rel="stylesheet" href="./assets/main.1013461f.css">
+  </head>
+
+  <body class="">
+    <div
+      class="fixed flex self-end"
+    ></div>
+    <section
+      class="m-10 grid gap-10 border-2 border-blue bg-white pt-8 lg:m-16"
+      id="step"
+      x-data="{ spillested: 'allevenues', skjulteforestillinger : 0 }"
+    >
+      <div
+        class="slide-in-right fixed bottom-10 right-0"
+      >
+        <button
+          class="pulsate-fwd font-inputdesk w-56 rounded-md bg-blue px-2 py-5 font-input text-white"
+        >
+          Har du husket at reservere en
+          plads?
+        </button>
+      </div>
+      <div>
+        <h1
+          class="mb-8 flex justify-center font-h1 text-h1 lg:text-h1desk"
+        >
+          Program 2023
+        </h1>
+      </div>
+
+      <!-- Dropdown filter -->
+
+      <form class="flex justify-center">
+        <div>
+          <label for="spillested"
+            >Vælg spillested:</label
+          >
+          <select
+            name="spillested"
+            id="spillested"
+            class="border border-blue"
+            x-model="spillested"
+            form="filtre"
+            x-on:change="$nextTick(() => { ingenforestillinger() });"
+          >
+            <option value="allevenues">
+              Alle venues
+            </option>
+            <option value="vox">
+              Vox
+            </option>
+            <option value="downunder">
+              Downunder
+            </option>
+            <option value="zebu">
+              Zebu
+            </option>
+          </select>
+        </div>
+      </form>
+
+      <!-- Cards -->
+
+      <div
+        class="forestillinger overflow-hidden"
+      >
+        <!-- VOX -->
+        <div
+          class="forestilling"
+          :class="{'hidden': !(['allevenues', 'vox'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <div
+            class="max-w-96 relative top-36 -left-20 z-10"
+          >
+            <p
+              class="flex w-48 -rotate-90 justify-center border border-blue bg-white font-input text-undernav"
+            >
+              Vox-Teaterhuset
+            </p>
+          </div>
+
+          <!-- card -->
+
+          <div class="">
+            <div
+              class="hide-scroll-bar flex overflow-x-scroll pb-10"
+            >
+              <div
+                class="ml-10 flex flex-nowrap gap-2 md:ml-20 lg:ml-40"
+              >
+                <!-- 2.august -->
+                <div
+                  class="inline-block"
+                >
+                  <!--card  -->
+                  <div
+                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                  >
+                    <!-- card header -->
+                    <div
+                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                    >
+                      <p class="">
+                        Tirsdag
+                      </p>
+                      <p>2. august</p>
+                    </div>
+
+                    <!-- card info -->
+                    <div
+                      class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
+                    >
+                      <p
+                        class="font-bold"
+                      >
+                        kl 15:00
+                      </p>
+                      <a
+                        class="hover:text-blue hover:underline"
+                        href=""
+                        >Vild med dig</a
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3.august -->
+                <div
+                  class="inline-block"
+                >
+                  <!--card  -->
+                  <div
+                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                  >
+                    <!-- card header -->
+                    <div
+                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                    >
+                      <p class="">
+                        Onsdag
+                      </p>
+                      <p>2. august</p>
+                    </div>
+
+                    <!-- card info -->
+                    <div
+                      class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
+                    >
+                      <!-- 1. venue -->
+                      <div
+                        class="grid grid-cols-2"
+                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 16:15
+                        </p>
+                        <a
+                          class="hover:text-blue hover:underline"
+                          href=""
+                          >Vild med
+                          dig</a
+                        >
+                      </div>
+
+                      <!-- 2. venue -->
+                      <div
+                        class="grid grid-cols-2"
+                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 20:00
+                        </p>
+                        <a
+                          class="hover:text-blue hover:underline"
+                          href=""
+                          >Vild med
+                          dig</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 5.august -->
+                <div
+                  class="inline-block"
+                >
+                  <!-- card -->
+                  <div
+                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                  >
+                    <!-- card header -->
+                    <div
+                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                    >
+                      <p class="">
+                        Fredag
+                      </p>
+                      <p>4. august</p>
+                    </div>
+
+                    <!-- card info -->
+                    <div
+                      class="mx-3 h-40 w-56 justify-around bg-card p-2 pt-2 font-input text-input"
+                    >
+                      <div
+                        class="grid grid-cols-2"
+                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 19:15
+                        </p>
+                        <a
+                          class="hover:text-blue hover:underline"
+                          href=""
+                          >Mand ligger
+                          som mand har
+                          redt</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 6.august -->
+                <div
+                  class="inline-block"
+                >
+                  <!--card  -->
+                  <div
+                    class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                  >
+                    <!-- card header -->
+                    <div
+                      class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                    >
+                      <p class="">
+                        Lørdag
+                      </p>
+                      <p>6. august</p>
+                    </div>
+
+                    <!-- card info -->
+                    <div
+                      class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
+                    >
+                      <!-- 1. venue -->
+                      <div
+                        class="grid grid-cols-2"
+                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 13:00
+                        </p>
+                        <a
+                          class="hover:text-blue hover:underline"
+                          href=""
+                          >Det levende
+                          rum</a
+                        >
+                      </div>
+
+                      <!-- 2. venue -->
+                      <div
+                        class="grid grid-cols-2"
+                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 17:35
+                        </p>
+                        <a
+                          class="hover:text-blue hover:underline"
+                          href=""
+                          >Det levende
+                          rum</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ZeBU -->
+        <div
+          class="forestilling"
+          :class="{'hidden': !(['allevenues', 'zebu'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <div
+            class="max-w-96 relative -left-20 top-36 justify-center"
+          >
+            <p
+              class="flex w-48 -rotate-90 justify-center border border-blue bg-white font-input text-undernav"
+            >
+              ZeBU
+            </p>
+          </div>
+          <!-- card -->
+          <div class="">
+            <div class="">
+              <div
+                class="hide-scroll-bar flex overflow-x-scroll pb-10"
+              >
+                <div
+                  class="ml-10 flex flex-nowrap gap-2 md:ml-20 lg:ml-40"
+                >
+                  <!-- 2.august -->
+                  <div
+                    class="inline-block"
+                  >
+                    <!--card  -->
+                    <div
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    >
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Tirsdag
+                        </p>
+                        <p>2. august</p>
+                      </div>
+
+                      <!-- card info -->
+                      <div
+                        class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
+                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 18:30
+                        </p>
+                        <a
+                          class="hover:text-blue hover:underline"
+                          href=""
+                          >What fires
+                          together wires
+                          together</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 3.august -->
+                  <div
+                    class="inline-block"
+                  >
+                    <!--card  -->
+                    <div
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    >
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Onsdag
+                        </p>
+                        <p>3. august</p>
+                      </div>
+
+                      <!-- card info -->
+                      <div
+                        class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
+                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 17:35
+                        </p>
+                        <a
+                          class="hover:text-blue hover:underline"
+                          href=""
+                          >What fires
+                          together wires
+                          together</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 4.august -->
+                  <div
+                    class="inline-block"
+                  >
+                    <!--card  -->
+                    <div
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    >
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Torsdag
+                        </p>
+                        <p>4. august</p>
+                      </div>
+
+                      <!-- card info -->
+                      <div
+                        class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
+                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 18:30
+                        </p>
+                        <a
+                          class="hover:text-blue hover:underline"
+                          href=""
+                          >Det levende
+                          rum</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 5.august -->
+                  <div
+                    class="inline-block"
+                  >
+                    <!--card  -->
+                    <div
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    >
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Fredag
+                        </p>
+                        <p>5. august</p>
+                      </div>
+
+                      <!-- card info -->
+                      <div
+                        class="mx-3 grid h-40 w-56 grid-cols-2 bg-card px-2 pt-2 font-input text-input"
+                      >
+                        <p
+                          class="font-bold"
+                        >
+                          kl 18:00
+                        </p>
+                        <a
+                          class="hover:text-blue hover:underline"
+                          href=""
+                          >Det levende
+                          rum</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Xenon  -->
+        <div
+          class="forestilling"
+          :class="{'hidden': !(['allevenues', 'xenon'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <div
+            class="max-w-96 relative -left-[88px] top-36 justify-center"
+          >
+            <div>
+              <p
+                class="nowrap flex w-52 -rotate-90 flex-nowrap justify-center border border-blue bg-white font-input text-undernav"
+              >
+                Xenon-Teaterhuset
+              </p>
+            </div>
+          </div>
+          <!-- card -->
+          <div class="">
+            <div class="">
+              <div
+                class="hide-scroll-bar flex overflow-x-scroll pb-10"
+              >
+                <div
+                  class="ml-10 flex flex-nowrap gap-2 md:ml-20 lg:ml-40"
+                >
+                  <!-- 4.august -->
+                  <div
+                    class="inline-block"
+                  >
+                    <!--card  -->
+                    <div
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    >
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Torsdag
+                        </p>
+                        <p>4. august</p>
+                      </div>
+
+                      <!-- card info -->
+                      <div
+                        class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
+                      >
+                        <!-- 1. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 16:45
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >GO GO
+                            YO-YOKU
+                          </a>
+                        </div>
+
+                        <!-- 2. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 20:15
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >GO GO
+                            YO-YOKU</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 5. august -->
+                  <div
+                    class="inline-block"
+                  >
+                    <!--card  -->
+                    <div
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    >
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Fredag
+                        </p>
+                        <p>5. august</p>
+                      </div>
+
+                      <!-- card info -->
+                      <div
+                        class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
+                      >
+                        <!-- 1. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 16:30
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >GO GO
+                            YO-YOKU</a
+                          >
+                        </div>
+
+                        <!-- 2. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 20:00
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >Frygten for
+                            at leve</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- 6.august -->
+                  <div
+                    class="inline-block"
+                  >
+                    <!--card  -->
+                    <div
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    >
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Lørdag
+                        </p>
+                        <p>6. august</p>
+                      </div>
+
+                      <!-- card info -->
+                      <div
+                        class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
+                      >
+                        <!-- 1. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 12:45
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >Frygten for
+                            at leve</a
+                          >
+                        </div>
+
+                        <!-- 2. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 14:45
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >Frygten for
+                            at leve</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Downunder -->
+        <div
+          class="forestilling"
+          :class="{'hidden': !(['allevenues', 'downunder'].includes(spillested)) }"
+          x-transition:enter.duration.800ms
+          x-on:change="testfunction();"
+        >
+          <div
+            class="max-w-96 relative -left-20 top-36 justify-center"
+          >
+            <div>
+              <p
+                class="flex w-48 -rotate-90 flex-nowrap justify-center border border-blue bg-white font-input text-undernav"
+              >
+                Downunder
+              </p>
+            </div>
+          </div>
+          <!-- card -->
+          <div class="">
+            <div class="">
+              <div
+                class="hide-scroll-bar flex overflow-x-scroll pb-10"
+              >
+                <div
+                  class="ml-10 flex flex-nowrap gap-2 md:ml-20 lg:ml-40"
+                >
+                  <!-- 4.august -->
+                  <div
+                    class="inline-block"
+                  >
+                    <!--card  -->
+                    <div
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    >
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Torsdag
+                        </p>
+                        <p>4. august</p>
+                      </div>
+
+                      <!-- card info -->
+                      <div
+                        class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
+                      >
+                        <!-- 1. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 15:00
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >Re-birth
+                          </a>
+                        </div>
+
+                        <!-- 2. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 18:15
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >Re-birth</a
+                          >
+                        </div>
+
+                        <!-- 3. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 20:15
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >Re-birth</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- 5.august -->
+                  <div
+                    class="inline-block"
+                  >
+                    <!--card  -->
+                    <div
+                      class="h-64 w-64 overflow-hidden rounded-lg border-4 border-blue bg-white shadow-md transition-shadow duration-300 ease-in-out hover:shadow-xl"
+                    >
+                      <!-- card header -->
+                      <div
+                        class="mb-2 grid justify-center bg-white font-body text-footer font-bold"
+                      >
+                        <p class="">
+                          Fredag
+                        </p>
+                        <p>5. august</p>
+                      </div>
+
+                      <!-- card info -->
+                      <div
+                        class="mx-3 flex h-40 w-56 flex-col gap-5 bg-card px-2 pt-2 font-input text-input"
+                      >
+                        <!-- 1. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 15:00
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >Re-birth
+                          </a>
+                        </div>
+
+                        <!-- 2. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 18:15
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >Re-birth</a
+                          >
+                        </div>
+
+                        <!-- 3. venue -->
+                        <div
+                          class="grid grid-cols-2"
+                        >
+                          <p
+                            class="font-bold"
+                          >
+                            kl 20:00
+                          </p>
+                          <a
+                            class="hover:text-blue hover:underline"
+                            href=""
+                            >Re-birth</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="grid place-items-center bg-footerpink py-10 lg:grid-cols-4 lg:grid-rows-2"
+    >
+      <img
+        class="h-32 pb-10 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:h-44"
+        src="./assets/vildskudlogo.5628e10d.svg"
+        alt=""
+      />
+      <div
+        class="grid gap-10 lg:col-start-3 lg:row-span-2 lg:row-start-1"
+      >
+        <div
+          class="grid place-items-center gap-2 self-center lg:col-start-2 lg:row-start-1 lg:grid-cols-3 lg:grid-rows-2 lg:place-items-start"
+        >
+          <div
+            class="grid place-items-center lg:col-start-3 lg:row-start-2 lg:flex lg:flex-col"
+          >
+            <p
+              class="font-body text-body uppercase lg:col-start-3 lg:row-start-1"
+            >
+              Sociale medier
+            </p>
+            <div
+              class="my-2 flex gap-5 lg:gap-12"
+            >
+              <a
+                class="font-body text-body text-blue underline"
+                href=""
+                >Instagram</a
+              >
+              <a
+                class="font-body text-body text-blue underline"
+                href=""
+                >Facebook</a
+              >
+            </div>
+          </div>
+          <a
+            class="font-body text-body lg:col-start-1 lg:row-start-2"
+            href="mailto:info@vildskud.dk"
+            >info@vildskud.dk</a
+          >
+          <a
+            class="font-body text-body lg:col-start-2 lg:row-start-2"
+            href="tel:+45 12 34 56 78"
+            >+45 1234 5678</a
+          >
+        </div>
+        <div
+          class="flex flex-col place-items-center gap-4 lg:col-start-2 lg:row-start-2 lg:flex-row lg:gap-20"
+        >
+          <a
+            class="font-body text-body uppercase"
+            href="kontakt.html"
+            >Kontakt</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href=""
+            >Samarbejdspartner</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href=""
+            >Cookies</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href=""
+            >Privatlivspolitik</a
+          >
+          <a
+            class="font-body text-body uppercase"
+            href="sitemap.html"
+            >Sitemap</a
+          >
+        </div>
+      </div>
+      <p
+        class="text-2xs mt-6 flex justify-center font-body lg:col-start-1 lg:row-start-3"
+      >
+        Copyright © 2023 • Vildskud
+        Festival
+      </p>
+    </footer>
+    
+    <script
+      src="//unpkg.com/alpinejs"
+      defer
+    ></script>
+
+    <script>
+      function ingenforestillinger() {
+        const skjulteforestillinger =
+          document.querySelectorAll(
+            ".forestilling.hidden"
+          ).length;
+        if (
+          skjulteforestillinger === 7
+        ) {
+          document
+            .querySelector(
+              "#ingenforestillinger"
+            )
+            .classList.remove("hidden");
+        } else {
+          document
+            .querySelector(
+              "#ingenforestillinger"
+            )
+            .classList.add("hidden");
+        }
+      }
+    </script>
+    <style>
+      .hide-scroll-bar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+      .hide-scroll-bar::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </body>
+</html>
