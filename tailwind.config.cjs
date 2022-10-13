@@ -46,7 +46,7 @@ module.exports = {
       undernav: ["20px"],
       body: ["16px"],
       input: ["16px"],
-      footer: ["20px"],
+      footer: ["16px"],
       steps: ["150px"],
     },
     colors: {
@@ -70,7 +70,7 @@ module.exports = {
       btnsek: ["Inter"],
       nav: ["Times New Roman"],
       input: ["Kodchasan"],
-      linkfooter: ["Times New Roman"],
+      footer: ["Times New Roman"],
       link: [""],
       bodyfooter: ["Times New Roman"],
       body: ["Kodchasan"],
