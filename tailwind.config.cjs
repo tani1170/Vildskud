@@ -27,7 +27,7 @@ module.exports = {
       h3desk: ["28px"],
       h4desk: ["48px"],
       h5desk: ["48px"],
-      navdesk: ["59px"],
+      navdesk: ["35px"],
       undernavdesk: ["36px"],
       bodydesk: ["20px"],
       inputdesk: ["24px"],
