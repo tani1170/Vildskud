@@ -7,6 +7,19 @@
       type="image/svg+xml"
       href="/vite.svg"
     />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Kodchasan:wght@300;400;700&family=Londrina+Solid&display=swap"
+      rel="stylesheet"
+    />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
@@ -16,19 +29,20 @@
 
   <body class="">
     <main
-      class="border-black m-10 mb-8 border-2 p-8 pb-4"
+      class="m-10 mb-8 border-2 border-blue p-8 pb-4"
       id="step"
       x-data="{ step: 'step1', billettype: '', antal: '1', dato : '2.august'}"
     >
-      <header
-        class="border-slate-500 border-b pt-4 pb-8"
+      <div
+        class="mb-8 border-2 border-blue pt-4 pb-8 lg:mx-96"
       >
-        <p
-          class="text-4xl flex justify-center self-center pb-2"
-        >
-          BILLETKØB
-        </p>
-        <!-- <ul class="">
+        <header>
+          <h1
+            class="flex justify-center self-center py-5 pb-2 text-h1 lg:text-h1desk"
+          >
+            BILLETKØB
+          </h1>
+          <!-- <ul class="">
         <li
           class="inline pr-2"
           :class="{'border-black border-b': step === 'step1' }"
@@ -54,265 +68,302 @@
           4: Bekræftelse
         </li>
       </ul> -->
-      </header>
+        </header>
 
-      <section
-        class="border-slate-500 border-b py-8"
-      >
-        <!-- step 1  -- BILLETTYPE -->
-        <div
-          id="step1"
-          x-show="step === 'step1'"
+        <section
+          class="mt-5 border-b border-t border-blue px-12 py-8"
         >
-          <!-- <p class="mb-4">
+          <!-- step 1  -- BILLETTYPE -->
+          <div
+            id="step1"
+            x-show="step === 'step1'"
+          >
+            <!-- <p class="mb-4">
           So: You love wine, and want
           wine delivered to your
           doorstep on subscription!
         </p> -->
-          <p class="mb-10">
-            Vælg billettype
-          </p>
-          <form
-            id="billetkoeb"
-            class="flex flex-col gap-5"
-          >
-            <div>
-              <input
-                type="radio"
-                id="endag"
-                name="billetype"
-                value="endag"
-                x-model="billettype"
-              />
-              <label for="endag"
-                >Endags-billet 120
-                KR</label
-              >
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="partout"
-                name="billettype"
-                value="partout"
-                x-model="billettype"
-              />
-              <label for="partout"
-                >Partout-billet 295
-                KR</label
-              >
-            </div>
-          </form>
-        </div>
-
-        <!-- step 2  --  DATO -->
-        <div
-          id="step2"
-          x-show="step === 'step2'"
-          class="flex flex-col gap-10"
-        >
-          <p>
-            Hvilken dag vil du købe
-            billetter til?
-          </p>
-          <div>
-            <label for="dato"
-              >Endags-billet til d.
-            </label>
-            <select
-              name="dato"
-              id="dato"
-              x-model="dato"
-              form="billetkoeb"
+            <p
+              class="mb-10 font-body text-body lg:text-bodydesk"
             >
-              <option value="2.augsut">
-                2. august
-              </option>
-              <option value="3.august">
-                3. august
-              </option>
-              <option value="4.augsut">
-                4. august
-              </option>
-              <option value="5.august">
-                5. august
-              </option>
-              <option value="6.august">
-                6. august
-              </option>
-            </select>
+              Vælg billettype
+            </p>
+            <form
+              id="billetkoeb"
+              class="flex flex-col gap-5"
+            >
+              <div>
+                <input
+                  type="radio"
+                  id="endag"
+                  name="billetype"
+                  value="endag"
+                  x-model="billettype"
+                />
+                <label
+                  class="font-body text-body lg:text-bodydesk"
+                  for="endag"
+                  >Endags-billet 120
+                  KR</label
+                >
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  id="partout"
+                  name="billettype"
+                  value="partout"
+                  x-model="billettype"
+                />
+                <label
+                  class="font-body text-body lg:text-bodydesk"
+                  for="partout"
+                  >Partout-billet 295
+                  KR</label
+                >
+              </div>
+            </form>
           </div>
-        </div>
 
-        <!-- step 3  -- ANTAL  -->
-        <div
-          id="step3"
-          x-show="step === 'step3'"
-          class="flex flex-col gap-10"
-        >
-          <p>
-            Hvor mange antal billetter
-            ønsker du?
-          </p>
-          <div>
-            <label for="antal"
-              >Vælg antal
-              billetter:</label
+          <!-- step 2  --  DATO -->
+          <div
+            id="step2"
+            x-show="step === 'step2'"
+            class="flex flex-col gap-10"
+          >
+            <p
+              class="font-body text-body lg:text-bodydesk"
             >
-            <select
-              name="antal"
-              id="antal"
-              x-model="antal"
-              form="billetkoeb"
-            >
-              <option value="1">
-                1
-              </option>
-              <option value="2">
-                2
-              </option>
-              <option value="3">
-                3
-              </option>
-              <option value="4">
-                4
-              </option>
-              <option value="5">
-                5
-              </option>
-              <option value="6">
-                5
-              </option>
-            </select>
+              Hvilken dag vil du købe
+              billetter til?
+            </p>
+            <div class="grid">
+              <label
+                class="font-body text-body lg:text-bodydesk"
+                for="dato"
+                >Endags-billet til d.
+              </label>
+              <select
+                name="dato"
+                id="dato"
+                x-model="dato"
+                form="billetkoeb"
+                class="border-2 border-blue lg:w-56"
+              >
+                <option
+                  value="2.augsut"
+                >
+                  2. august
+                </option>
+                <option
+                  value="3.august"
+                >
+                  3. august
+                </option>
+                <option
+                  value="4.augsut"
+                >
+                  4. august
+                </option>
+                <option
+                  value="5.august"
+                >
+                  5. august
+                </option>
+                <option
+                  value="6.august"
+                >
+                  6. august
+                </option>
+              </select>
+            </div>
           </div>
-        </div>
-        <!-- step 4-->
-        <div
-          id="step4"
-          x-show="step === 'step4'"
-          class="prose"
-        >
-          <h3>Din kurv</h3>
 
-          <!-- <p
-          x-show="billettype === 'endag'"
-        >
-          Du har valgt Endags-billet
-        </p>
-        <p
-          x-show="billettype === 'partout'"
-        >
-          Du har valgt Partout-billet
-        </p> -->
-
-          <p>
-            <span
-              x-text="`Du har valgt ${antal} `"
-            ></span>
-            <span
-              x-show="billettype === 'endag'"
-            >
-              en endags-
-            </span>
-            <span
-              x-show="billettype === 'partout'"
-            >
-              partout-
-            </span>
-
-            <span x-show="antal === '1'"
-              >billet</span
-            >
-            <span x-show="antal === '2'"
-              >billetter</span
-            >
-            <span x-show="antal === '3'"
-              >billetter</span
-            >
-            <span x-show="antal === '4'"
-              >billetter</span
-            >
-            <span x-show="antal === '5'"
-              >billetter</span
-            >
-            <span x-show="antal === '6'"
-              >billetter</span
-            >
-          </p>
-
-          <p>
-            <span>Pris: </span
-            ><span
-              class="font-bold"
-              x-text="`${antal * 120} DKK `"
-            ></span>
-          </p>
-        </div>
-      </section>
-      <footer
-        class="flex justify-between py-8"
-      >
-        <div class="">
-          <button
-            id="knap2"
-            class="border-black border-2 p-2"
-            x-on:click="step = 'step1'"
-            x-show="step === 'step2' || step === 'step3' && billettype === 'partout'"
-          >
-            &LeftArrow; Billettype
-          </button>
-          <button
-            id="knap3"
-            class="border-black border-2 p-2"
-            x-on:click="step = 'step2'"
-            x-show="step === 'step3' && billettype !== 'partout'"
-          >
-            &LeftArrow; Dato
-          </button>
-          <button
-            id="knap4"
-            class="border-black border-2 p-2"
-            x-on:click="step = 'step3'"
-            x-show="step === 'step4'"
-          >
-            &LeftArrow; Antal
-          </button>
-        </div>
-        <div class="">
-          <button
-            id="knap2"
-            class="border-black border-2 p-2"
-            x-on:click="step = 'step2'"
-            x-show="step === 'step1' && (billettype === 'endag')"
-          >
-            Dato &RightArrow;
-          </button>
-          <button
-            id="knap3"
-            class="border-black border-2 p-2"
-            x-on:click="step = 'step3'"
-            x-show="step === 'step2' || step === 'step1' && billettype === 'partout'"
-          >
-            Antal &RightArrow;
-          </button>
-          <button
-            id="knap4"
-            class="border-black border-2 p-2"
-            x-on:click="step = 'step4'"
+          <!-- step 3  -- ANTAL  -->
+          <div
+            id="step3"
             x-show="step === 'step3'"
+            class="flex flex-col gap-10"
           >
-            Din kurv &RightArrow;
-          </button>
-          <button
-            id="knap4"
-            class="border-black bg-green-200 border-2 p-2"
-            x-on:click="step = 'step4'"
+            <p
+              class="font-body text-body lg:text-bodydesk"
+            >
+              Hvor mange antal billetter
+              ønsker du?
+            </p>
+            <div class="grid">
+              <label
+                class="font-body text-body lg:text-bodydesk"
+                for="antal"
+                >Vælg antal
+                billetter:</label
+              >
+              <select
+                name="antal"
+                id="antal"
+                x-model="antal"
+                form="billetkoeb"
+                class="border-2 border-blue lg:w-56"
+              >
+                <option value="1">
+                  1
+                </option>
+                <option value="2">
+                  2
+                </option>
+                <option value="3">
+                  3
+                </option>
+                <option value="4">
+                  4
+                </option>
+                <option value="5">
+                  5
+                </option>
+                <option value="6">
+                  5
+                </option>
+              </select>
+            </div>
+          </div>
+          <!-- step 4-->
+          <div
+            id="step4"
             x-show="step === 'step4'"
+            class="prose"
           >
-            Gå til betaling
-          </button>
-        </div>
+            <h3
+              class="lg:text-bodyh3 font-h3 text-h3"
+            >
+              Din kurv
+            </h3>
+
+            <p
+              class="font-body text-body lg:text-bodydesk"
+            >
+              <span
+                x-text="`Du har valgt ${antal} `"
+              ></span>
+              <span
+                x-show="billettype === 'endag'"
+              >
+                en endags-
+              </span>
+              <span
+                x-show="billettype === 'partout'"
+              >
+                partout-
+              </span>
+
+              <span
+                x-show="antal === '1'"
+                >billet</span
+              >
+              <span
+                x-show="antal === '2'"
+                >billetter</span
+              >
+              <span
+                x-show="antal === '3'"
+                >billetter</span
+              >
+              <span
+                x-show="antal === '4'"
+                >billetter</span
+              >
+              <span
+                x-show="antal === '5'"
+                >billetter</span
+              >
+              <span
+                x-show="antal === '6'"
+                >billetter</span
+              >
+            </p>
+
+            <p
+              class="font-text font-body lg:text-bodydesk"
+            >
+              <span>Pris: </span
+              ><span
+                class="font-bold"
+                x-text="`${antal * 120} DKK `"
+              ></span>
+            </p>
+          </div>
+        </section>
+
+        <!-- KNAPPER -->
         <footer
+          class="m-0 flex justify-between py-4"
+        >
+          <!-- VENSTRE KNAPPER -->
+          <div class="">
+            <button
+              id="knap2"
+              class="ml-4 border-2 border-blue p-3 font-body text-body lg:text-bodydesk"
+              x-on:click="step = 'step1'"
+              x-show="step === 'step2' || step === 'step3' && billettype === 'partout'"
+            >
+              &LeftArrow; Billettype
+            </button>
+            <button
+              id="knap3"
+              class="ml-4 border-2 border-blue p-3 font-body text-body lg:text-bodydesk"
+              x-on:click="step = 'step2'"
+              x-show="step === 'step3' && billettype !== 'partout'"
+            >
+              &LeftArrow; Dato
+            </button>
+            <button
+              id="knap4"
+              class="ml-4 border-2 border-blue p-3 font-body text-body lg:text-bodydesk"
+              x-on:click="step = 'step3'"
+              x-show="step === 'step4'"
+            >
+              &LeftArrow; Antal
+            </button>
+          </div>
+
+          <!-- HØJRE KNAPPER -->
+          <div class="">
+            <button
+              id="knap2"
+              class="mr-4 border-2 border-blue p-3 font-body text-body lg:text-bodydesk"
+              x-on:click="step = 'step2'"
+              x-show="step === 'step1' && (billettype === 'endag')"
+            >
+              Dato &RightArrow;
+            </button>
+            <button
+              id="knap3"
+              class="mr-4 border-2 border-blue p-3 font-body text-body lg:text-bodydesk"
+              x-on:click="step = 'step3'"
+              x-show="step === 'step2' || step === 'step1' && billettype === 'partout'"
+            >
+              Antal &RightArrow;
+            </button>
+            <button
+              id="knap4"
+              class="mr-4 border-2 border-blue p-3"
+              x-on:click="step = 'step4'"
+              x-show="step === 'step3'"
+            >
+              Din kurv &RightArrow;
+            </button>
+            <button
+              id="knap4"
+              class="mr-8 border-2 border-blue bg-blue p-3 font-body text-body text-white lg:text-bodydesk"
+              x-on:click="step = 'step4'"
+              x-show="step === 'step4'"
+            >
+              Gå til betaling
+            </button>
+          </div>
+        </footer>
+      </div>
+      <!-- Footer -->
+      <footer
         class="grid place-items-center bg-footerpink py-10 lg:grid-cols-4 lg:grid-rows-2"
       >
         <img
