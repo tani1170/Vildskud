@@ -13,6 +13,10 @@ module.exports = {
         "url('/img/ladydrink.svg')",
       twobike:
         "url('/img/twobike.svg')",
+      letterbg:
+        "url('/img/desk_bg.webp')",
+      letterbgmob:
+        "url('/img/baggrund_mob.webp')",
     },
     fontSize: {
       h6: ["59px"],
@@ -79,5 +83,4 @@ module.exports = {
     require("@tailwindcss/forms"),
     require("daisyui"),
   ],
-  
 };
